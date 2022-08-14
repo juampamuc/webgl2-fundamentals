@@ -1,6 +1,7 @@
+
 body {
   margin: 0;
-  font-family: Georgia, serif;
+  font-family: var(--article-font-family);
   font-size: 19px;
   line-height: 150%;
 }
@@ -11,6 +12,20 @@ p + p {
 li > p {
   width: calc(100% - 2em);
 }
+
+kbd {
+    background-color: #eee;
+    border-radius: 3px;
+    border: 1px solid #b4b4b4;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .2), 0 2px 0 0 rgba(255, 255, 255, .7) inset;
+    color: #333;
+    display: inline-block;
+    font-size: .85em;
+    font-weight: 700;
+    line-height: 1;
+    padding: 2px 4px;
+    white-space: nowrap;
+ }
 
 table {
     margin-top: 1em;
@@ -44,16 +59,22 @@ pre.prettyprint li {
 }
 pre.prettyprint code {
     color: #CCC;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: var(--code-block-font-family);
     display: block;
 }
 
 /* to handle long words in paragraph */
-p code {
+p code, h3 {
   word-break: break-word;
   white-space: normal;
 }
 
+.lesson-comment-notes {
+  padding: 1em;
+  margin: 1em;
+  background: #DDD;
+  color: red;
+}
 
 .webgl_navbar>div,
 .lesson-title,
@@ -81,6 +102,7 @@ p code {
     background-position: center, center;
     padding: 1em;
     text-align: center;
+    position: relative;
 }
 .webgl_header h1 {
     font-size: 5vw;
@@ -138,6 +160,11 @@ p code {
   background-size: 20px 20px;
   background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
 }
+
+.x-axis { color: red; }
+.y-axis { color: green; }
+.z-axis { color: blue; }
+
 .fullscreen {
     position: fixed !important;
     left: 0;
@@ -175,7 +202,7 @@ p code {
     text-indent: -1em;
 }
 h1, h2, h3, h4 {
-  font-family: sans-serif;
+  font-family: var(--headline-font-family);
   line-height: 1.2;
 }
 h3 {
@@ -183,7 +210,7 @@ h3 {
 }
 code {
     color: black;
-    font-family: monospace;
+    font-family: var(--code-font-family);
     background-color: #ddd;
     padding: 0.1em 0.2em 0.1em 0.2em;
     border-radius: 0.5em;
@@ -211,6 +238,7 @@ pre>code,
   display: block;
   text-align: center;
   max-width: 95%;
+  overflow-x: auto;
 }
 .webgl_center pre,
 pre.webgl_center {
@@ -254,7 +282,7 @@ pre.webgl_center {
 table.vertex_table {
   border: 1px solid black;
   border-collapse: collapse;
-  font-family: monospace;
+  font-family: var(--code-font-family);
   font-size: small;
 }
 
@@ -270,6 +298,37 @@ table.vertex_table td {
   padding-right: 1em;
   padding-left: 1em;
 }
+
+.tabular-data {
+  font-family: var(--code-font-family);
+  font-size: medium;
+  text-align: left;
+  display: inline-block;
+  line-height: 1.2;
+  border-collapse: collapse;
+}
+.tabular-data thead {
+  background: lightblue;
+}
+.tabular-highlight {
+  background: pink;
+}
+.tabular-data td {
+  border: 1px solid black;
+  padding: 0.2em;
+}
+.tabular-data1 td:nth-child(3),
+.tabular-data1 td:nth-child(4) {
+  text-align: center;
+}
+.tabular-data2 tbody td:nth-child(8),
+.tabular-data2 tbody td:nth-child(9) {
+  text-align: center;
+}
+.tabular-data4 tbody td:nth-child(4) {
+  text-align: center;
+}
+
 
 iframe {
     display: block;
@@ -309,6 +368,13 @@ div.webgl_bottombar>h3 {
 }
 div.webgl_bottombar code {
     background-color: #ccc;
+}
+
+.so {
+  font-size: x-small;
+}
+.so a {
+  cursor: pointer;
 }
 
 /* --- Prettify --- */
@@ -353,7 +419,7 @@ pre.prettyprint, code.prettyprint {
     border: 1px solid #000;
     box-shadow: 10px 10px 0px #ccc;
     font-size: 9pt;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: var(--code-block-font-family);
     margin: auto;
     padding: 1em;
     text-align: left;           /* override justify on body */
@@ -379,7 +445,7 @@ pre.prettyprint, code.prettyprint {
         color: #000;
         background: #EEE;
         font-size: 8pt;
-        font-family: "Lucida Console", Monaco, monospace;
+        font-family: var(--code-block-font-family);
         width: 95%;
         margin: auto;
         padding: 1em;
@@ -426,6 +492,15 @@ pre.prettyprint, code.prettyprint {
     .webgl_example {
         height: 400px;
     }
+    .webgl_math {
+        font-size: small;
+    }
+    ul, ol {
+      padding-inline-start: 10px;
+    }
+    li {
+      margin-left: 5px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -441,6 +516,9 @@ pre.prettyprint, code.prettyprint {
 }
 
 @media (prefers-color-scheme: dark) {
+  html {
+    scrollbar-color: hsl(0, 0%, 35%) hsl(0, 0%, 13%);
+  }
   body {
     background: #333;
     color: #CCC;
@@ -455,6 +533,9 @@ pre.prettyprint, code.prettyprint {
     background: #666;
     color: #CCC;
   }
+  .x-axis { color: red; }
+  .y-axis { color: hsl(120, 100%, 40%); }
+  .z-axis { color: hsl(240, 100%, 80%); }
   img {
     background: #DDD;
   }
@@ -476,16 +557,25 @@ pre.prettyprint, code.prettyprint {
     background: #222;
   }
   .lesson-main>blockquote {
-      background-color: #1b1b44;
+    background-color: #1b1b44;
   }
   table.vertex_table th {
-      background-color: #348;
+    background-color: #348;
   }
   div.webgl_bottombar {
     background-color: #1b1b44;
   }
   div.webgl_bottombar code {
     background-color: #348;
+  }
+  .lesson-comment-notes {
+    background: #222;
+  }
+  .tabular-data thead {
+    background: darkblue;
+  }
+  .tabular-highlight {
+    background: darkred;
   }
 }
 

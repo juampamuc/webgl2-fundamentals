@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<!-- this file is auto-generated from webgl/lessons/ko/langinfo.hanson. Do not edited directly -->
+<!-- this file is auto-generated from webgl/lessons/ko/webgl-boilerplate.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021, GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
 
-    * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-    * Neither the name of Gregg Tavares. nor the names of his
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
+*   Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+*   Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following disclaimer
+    in the documentation and/or other materials provided with the
+    distribution.
+
+*   Neither the name of GFXFundamentals. nor the names of his
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -34,25 +36,78 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGL Boilerplate" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
-<meta property="og:description" content="Some of the code you need for all WebGL programs" />
-<meta property="og:url" content="http://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webgl2fundamentals.org" />
-<meta name="twitter:title" content="WebGL Boilerplate" />
-<meta name="twitter:url" content="http://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html" />
-<meta name="twitter:description" content="Some of the code you need for all WebGL programs" />
-<meta name="twitter:image:src" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
+<meta name="description" content="모든 WebGL 프로그램의 작성에 필요한 일부 코드">
+<meta name="keywords" content="webgl webgl2 graphics">
+<meta name="thumbnail" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ko.jpg">
+
+<meta property="og:title" content="WebGL2 보일러플레이트(Boilerplate)">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ko.jpg">
+<meta property="og:description" content="모든 WebGL 프로그램의 작성에 필요한 일부 코드">
+<meta property="og:url" content="https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webgl2fundamentals.org">
+<meta name="twitter:title" content="WebGL2 보일러플레이트(Boilerplate)">
+<meta name="twitter:url" content="https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html">
+<meta name="twitter:description" content="모든 WebGL 프로그램의 작성에 필요한 일부 코드">
+<meta name="twitter:image:src" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ko.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgl2fundamentals.org/#website",
+      "url":"https://webgl2fundamentals.org/",
+      "name":"Webgl2Fundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html#primaryimage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-boilerplate_ko.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html#webpage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html",
+      "inLanguage":"ko",
+      "name":"WebGL2 보일러플레이트(Boilerplate)",
+      "keywords":"webgl webgl2 graphics programming",
+      "isPartOf":{
+        "@id":"https://webgl2fundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-boilerplate.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
 
-<title>WebGL Boilerplate</title>
+<title>WebGL2 보일러플레이트(Boilerplate)</title>
 <link href="/webgl/lessons/resources/webgl2fundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/ko/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="de" href="https://webglfundamentals.org/webgl/lessons/de/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-boilerplate.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-boilerplate.html">
+
+
+
+
 </head>
 <body>
 <div class="webgl_navbar">
@@ -60,168 +115,545 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <select class="language">
     <option value="/webgl/lessons/webgl-boilerplate.html" >English</a>
     <option value="/webgl/lessons/de/webgl-boilerplate.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-boilerplate.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-boilerplate.html" selected>한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-boilerplate.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-boilerplate.html" >简体中文</a>
 </select>
 
 
-    <a href="#toc"></a>
+    <a href="#toc">목차</a>
   </div>
 </div>
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ko/">WebGL2Fundamentals.org</a></h1>
+<style>
+#forkongithub>div {
+    background: #000;
+    color: #fff;
+    font-family: arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    pointer-events: auto;
+}
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
+    background: #c11;
+    color: #fff;
+}
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+}
+#forkongithub>div::after {
+    bottom: 1px;
+    top: auto;
+}
+
+#forkongithub{
+    z-index: 9999;
+    /* needed for firefox */
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+#forkongithub svg{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    #forkongithub>div {
+        line-height: 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+  #forkongithub {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+    #forkongithub>div {
+        font-size: 0.7rem;
+        transform: translateX(150px) rotate(45deg) translate(20px,40px);
+    }
+}
+
+</style>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
+        <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
+    </g>
+</svg>
+</a></div></div></div>
+
 </div>
 
 
 <div class="container">
   <div class="lesson-title">
-    <h1>WebGL Boilerplate</h1>
+    <h1>WebGL2 보일러플레이트(Boilerplate)</h1>
   </div>
   <div class="lesson">
     <div class="lesson-main">
-      <p>죄송합니다. 이 문서는 아직 자원 봉사자들이 한국어로 번역하지 않았습니다. <a href="https://github.com/greggman/webgl-fundamentals">번역을 도와주세요!</a>! 😄</p>
-<p><a href="/webgl/lessons/webgl-boilerplate.html">원본보기</a>.</p>
+      <p>이 글은 <a href="webgl-fundamentals.html">WebGL 기초</a>에서 이어지는 글입니다.
+대부분의 WebGL 강의들은 모든걸 한 번에 다루기 때문에 배우기 복잡해 보이기도 합니다.
+가능 가능한 한 그것을 피하기 위해 작은 단위로 나누려고 합니다.</p>
+<p>WebGL을 복잡해 보이도록 만드는 것들 중 하나는 정점 셰이더와 프래그먼트 셰이더의 두 가지 작은 함수가 있다는 겁니다.
+이 두 함수가 GPU에서 실행되기 때문에 빠른 계산이 가능합니다.
+그러한 이유로 GPU가 해석할 수 있는 특수한 언어를 사용해 작성하는 것입니다.
+이 두 함수는 컴파일되고 링크되어야 하는데, 이러한 처리는 모든 WebGL 프로그램에서 99% 동일합니다.</p>
+<p>다음은 셰이더를 컴파일하는 보일러플레이트(boilerplate) 코드입니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
+ * 셰이더를 생성하고 컴파일합니다.
+ *
+ * @param {!WebGLRenderingContext} gl WebGL 컨텍스트
+ * @param {string} shaderSource 셰이더의 GLSL 소스코드
+ * @param {number} shaderType 셰이더의 타입, VERTEX_SHADER 또는 FRAGMENT_SHADER
+ * @return {!WebGLShader} 셰이더
+ */
+function compileShader(gl, shaderSource, shaderType) {
+  // 셰이더 객체 생성
+  var shader = gl.createShader(shaderType);
+
+  // 셰이더 소스 코드 설정
+  gl.shaderSource(shader, shaderSource);
+
+  // 셰이더 컴파일
+  gl.compileShader(shader);
+
+  // 컴파일 여부 확인
+  var success = gl.getShaderParameter(shader, gl.COMPILE_STATUS);
+  if (!success) {
+    // 컴파일하는 동안 문제 발생. 오류를 얻어옴
+    throw (&quot;could not compile shader:&quot; + gl.getShaderInfoLog(shader));
+  }
+
+  return shader;
+}
+</code></pre><p>그리고 두 셰이더를 링크하여 프로그램으로 만드는 보일러플레이트 코드는 아래와 같습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
+ * 두 셰이더로 프로그램을 생성합니다.
+ *
+ * @param {!WebGLRenderingContext) gl WebGL 컨텍스트
+ * @param {!WebGLShader} vertexShader 정점 셰이더
+ * @param {!WebGLShader} fragmentShader 프래그먼트 셰이더
+ * @return {!WebGLProgram} 프로그램
+ */
+function createProgram(gl, vertexShader, fragmentShader) {
+  // 프로그램 생성
+  var program = gl.createProgram();
+
+  // 셰이더 부착(attach)
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+
+  // 프로그램 링크
+  gl.linkProgram(program);
+
+  // 링크 여부 확인
+  var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+  if (!success) {
+    // 링크하는 동안 문제 발생
+    throw (&quot;program failed to link:&quot; + gl.getProgramInfoLog (program));
+  }
+
+  return program;
+};
+</code></pre><p>물론 어떻게 오류를 처리할지는 여러분에게 달려 있습니다.
+예외를 던지는(throw) 것이 오류를 처리하는 최고의 방법인 것은 아닙니다.
+그럼에도 불구하고 거의 모든 WebGL 프로그램에서 이 코드는 거의 비슷합니다.</p>
+<p>아래와 같은 멀티라인 템플릿 리터럴은 대부분의 모던 브라우저에서 지원됩니다.
+이를 통해 셰이더를 저장하는 것이 제가 선호하는 방식입니다. 그냥 아래와 같이 셰이더 코드를 작성합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var vertexShaderSource = `#version 300 es
+
+in vec4 a_position;
+uniform mat4 u_matrix;
+
+void main() {
+   gl_Position = u_matrix * a_position;
+}
+`;
+</code></pre><p>이렇게 하면 셰이더의 수정이 쉬워집니다.
+IE처럼 오래된 브라우저는 이러한 문법을 좋아하지 않지만 어차피 WebGL을 만들기 때문에 IE는 신경쓰지 않습니다.
+IE 지원과 WebGL 지원 여부까지 고려한다면 <a href="https://babeljs.io/">Babel</a>과 같은 라이브러리를 사용해 
+빌드를 수행해 IE가 이해할 수 있는 코드로 변환할 겁니다.</p>
+<p>전에는 저는 셰이더를 자바스크립트가 아닌 &lt;script&gt; 태그에 저장하는 것을 선호했습니다.
+이 방식도 셰이더 수정이 쉽고, 이런 경우 아래 코드를 사용합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
+ * 스크립트 태그의 내용으로 셰이더를 생성합니다.
+ *
+ * @param {!WebGLRenderingContext) gl WebGL 컨텍스트
+ * @param {string} scriptId 스크립트 태그의 id
+ * @param {string} opt_shaderType 생성할 셰이더의 타입.
+ *                 전달되지 않으면 스크립트 태그의 타입 속성을 사용합니다.
+ * @return {!WebGLShader} 셰이더
+ */
+function createShaderFromScript(gl, scriptId, opt_shaderType) {
+  // id로 스크립트 태그 탐색
+  var shaderScript = document.getElementById(scriptId);
+
+  if (!shaderScript) {
+    throw(&quot;*** Error: unknown script element&quot; + scriptId);
+  }
+
+  // 스크립트 태그의 컨텐츠 추출
+  var shaderSource = shaderScript.text;
+
+  // 타입을 넘기지 않으면, 스크립트 태그의 &#39;type&#39; 사용
+  if (!opt_shaderType) {
+    if (shaderScript.type == &quot;x-shader/x-vertex&quot;) {
+      opt_shaderType = gl.VERTEX_SHADER;
+    } else if (shaderScript.type == &quot;x-shader/x-fragment&quot;) {
+      opt_shaderType = gl.FRAGMENT_SHADER;
+    } else if (!opt_shaderType) {
+      throw(&quot;*** Error: shader type not set&quot;);
+    }
+  }
+
+  return compileShader(gl, shaderSource, opt_shaderType);
+};
+</code></pre><p>이제 셰이더를 컴파일하려면 아래와 같이 하면 됩니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var shader = compileShaderFromScript(gl, &quot;someScriptTagId&quot;);
+</code></pre><p>한 걸음 더 나아가서 스크립트 태그의 두 셰이더를 컴파일하고, 하나의 프로그램에 부착해 링킹을 수행하는 함수를 만들겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
+ * 두 개의 스크립트 태그로부터 프로그램을 생성합니다.
+ *
+ * @param {!WebGLRenderingContext} gl WebGL 컨텍스트
+ * @param {string} vertexShaderId 정점 셰이더 스크립트 태그의 id
+ * @param {string} fragmentShaderId 프래그먼트 셰이더 스크립트 태그의 id
+ * @return {!WebGLProgram} 프로그램
+ */
+function createProgramFromScripts(
+    gl, vertexShaderId, fragmentShaderId) {
+  var vertexShader = createShaderFromScriptTag(gl, vertexShaderId, gl.VERTEX_SHADER);
+  var fragmentShader = createShaderFromScriptTag(gl, fragmentShaderId, gl.FRAGMENT_SHADER);
+  return createProgram(gl, vertexShader, fragmentShader);
+}
+</code></pre><p>거의 모든 WebGL 프로그램에서 공통적으로 사용하는 다른 코드는 캔버스의 크기를 조정하는 코드입니다.
+<a href="webgl-resizing-the-canvas.html">여기</a>에서 해당 함수가 어떻게 구현되었는지 볼 수 있습니다.</p>
+<p>모든 예제에서는 아래 라인을 통해 이 두 함수가 포함(include)되었습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">&lt;script src=&quot;resources/webgl-utils.js&quot;&gt;&lt;/script&gt;
+</code></pre><p>그리고 아래와 같이 사용합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var program = webglUtils.createProgramFromScripts(gl, [idOfVertexShaderScript, idOfFragmentShaderScript]);
+
+...
+
+webglUtils.resizeCanvasToMatchDisplaySize(canvas);
+</code></pre><p>여러 줄의 동일한 코드로 복잡해시면
+특정 예제가 설명하려는 내용을 전달하는 데 방해가 됩니다.</p>
+<p>대부분의 예제에서 사용된 실제 보일러플레이트 API는 아래와 같습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">/**
+ * 2개의 소스로부터 프로그램을 생성합니다.
+ *
+ * @param {WebGLRenderingContext} gl 사용할 WebGLRenderingContext
+ * @param {string[]} shaderSources 셰이더 소스코드의 배열.
+ *        배열의 첫 번째 요소는 정점 셰이더이고, 두 번째는 프래그먼트 셰이더로 가정합니다.
+ * @param {string[]} [opt_attribs] attribute 이름의 배열.
+ *        따로 전달되지 않는다면 location은 인덱스로 할당됩니다.
+ * @param {number[]} [opt_locations] attribute location의 배열.
+ *        opt_attribs와 함께 전달되는 location 할당을 위한 배열.
+ * @param {module:webgl-utils.ErrorCallback} opt_errorCallback 에러 콜백.
+ *        기본적으로는 오류를 콘솔에 출력합니다.
+ *        다른 방식의 동작을 원한다면 콜백을 전달할 수 있습니다.
+ *        콜백은 오류 메시지를 전달 받습니다.
+ * @return {WebGLProgram} 생성된 프로그램.
+ * @memberOf module:webgl-utils
+ */
+function createProgramFromSources(gl,
+                                  shaderSources,
+                                  opt_attribs,
+                                  opt_locations,
+                                  opt_errorCallback)
+</code></pre><p><code class="notranslate" translate="no">shaderSources</code>는 GLSL 소스코드인 문자열의 배열입니다.
+배열의 첫 번째 문자열은 정점 셰이더의 소스코드이고 두 번째 인자는 프래그먼트 셰이더의 소스코드 입니다.</p>
+<p>여기까지가 최소한의 WebGL 보일러플레이드 코드입니다.
+<code class="notranslate" translate="no">webgl-utils.js</code> 코드는 <a href="../../resources/webgl-utils.js">여기</a>에서 보실 수 있습니다.
+좀 더 정리된 것을 원하신다면 <a href="https://twgljs.org">TWGL.js</a>를 확인해주세요.</p>
+<p>WebGL을 복잡하게 보이게 만드는 다른 부분은 셰이더에 입력 데이터를 설정하는 부분입니다.
+<a href="webgl-how-it-works.html">작동 원리</a>를 봐주세요.</p>
+<p>또한 <a href="webgl-less-code-more-fun.html">더 적은 코드로 즐겁게</a>를 읽고 <a href="https://twgljs.org">TWGL</a>를 확인해 보시길 바랍니다.</p>
+<p>참고로 비슷한 목적으로 사용되는 몇 가지 스크립트가 더 있습니다.</p>
+<ul>
+<li><p><a href="../../resources/webgl-lessons-ui.js"><code class="notranslate" translate="no">webgl-lessons-ui.js</code></a></p>
+<p>이건 슬라이더를 드래그하면 그 값이 갱신되어 표시되는 슬라이더를 만드는 코드를 제공합니다.
+마찬가지로 이러한 코드가 파일을 복잡하게 만드는 것이 싫어서 한 곳에 모아뒀습니다.</p>
+</li>
+<li><p><a href="../../resources/lessons-helper.js"><code class="notranslate" translate="no">lessons-helper.js</code></a></p>
+<p>이 스크립트는 webgl2fundmentals.org 이외의 곳에서는 필요하지 않습니다.
+live editor 내부에서 사용되어 화면에 에러 메세지 출력하는 걸 도와줍니다.</p>
+</li>
+<li><p><a href="../../resources/m3.js"><code class="notranslate" translate="no">m3.js</code></a></p>
+<p>2d 수학 함수 묶음입니다.
+행렬 수학에 대한 첫 글을 시작했을 때는 inline으로 만들기 시작했지만 
+결국 너무 길어져서 이후 예제에서는 이 스크립트를 포함하여 사용하고 있습니다.</p>
+</li>
+<li><p><a href="../../resources/m4.js"><code class="notranslate" translate="no">m4.js</code></a></p>
+<p>3d 수학 함수 묶음입니다.
+3d에 대한 첫 글을 시작했을 때는 inline으로 만들기 시작했지만 
+결국 너무 길어져서 3d에 관한 두 번째 글부터는 이 스크립트를 포함하여 사용하고 있습니다.</p>
+</li>
+</ul>
 
     </div>
     <div class="lesson-sidebar">
         <select class="language">
     <option value="/webgl/lessons/webgl-boilerplate.html" >English</a>
     <option value="/webgl/lessons/de/webgl-boilerplate.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-boilerplate.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-boilerplate.html" selected>한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-boilerplate.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-boilerplate.html" >简体中文</a>
 </select>
 
 
-        <ul>  <li>기초</li>
+        <div id="toc">
+          <ul>  <li>기초</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-getting-webgl2.html">WebGL2 사용하기</a></li>
-<li><a href="/webgl/lessons/ko/webgl-fundamentals.html">WebGL2 기초</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-getting-webgl2.html">WebGL2 사용법</a></li>
+<li><a href="/webgl/lessons/ko/webgl-fundamentals.html">기초</a></li>
 <li><a href="/webgl/lessons/ko/webgl-how-it-works.html">WebGL2 작동 원리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL2 쉐이더와 GLSL</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL2 셰이더와 GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL2 State Diagram</a></li>
         </ul>
   <li>WebGL2 vs WebGL1</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl2-whats-new.html">WebGL2 새로운 기능</a></li>
-<li><a href="/webgl/lessons/ko/webgl1-to-webgl2.html">Moving from WebGL1 to WebGL2</a></li>
-<li><a href="/webgl/lessons/ko/webgl1-to-webgl2-fundamentals.html">Differences from WebGLFundamentals.org to WebGL2Fundamentals.org</a></li>
+<li><a href="/webgl/lessons/ko/webgl1-to-webgl2.html">WebGL1에서 WebGL2로의 변경</a></li>
+<li><a href="/webgl/lessons/ko/webgl1-to-webgl2-fundamentals.html">WebGLFundamentals.org과 WebGL2Fundamentals.org의 차이점</a></li>
         </ul>
   <li>이미지 처리</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">WebGL2 이미지 처리</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">이미지 처리</a></li>
 <li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">WebGL2 이미지 처리 심화</a></li>
         </ul>
   <li>2D 이동, 회전, 크기 변환 행렬 계산</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">WebGL2 2D 이동</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-rotation.html">WebGL2 2D 회전</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL2 2D 크기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL2 2D 크기 변환</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-matrices.html">WebGL2 2D 행렬</a></li>
         </ul>
   <li>3D</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-orthographic.html">WebGL2 - Orthographic 3D</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-perspective.html">WebGL2 3D Perspective</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-camera.html">3D - Cameras</a></li>
-<li><a href="/webgl/lessons/ko/webgl-matrix-naming.html">3D - Matrix Naming</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-orthographic.html">3D 직교 투영</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-perspective.html">3D 원근 투영</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-camera.html">3D - 카메라</a></li>
+<li><a href="/webgl/lessons/ko/webgl-matrix-naming.html">3D - 행렬의 이름</a></li>
         </ul>
   <li>Lighting</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-lighting-directional.html">Directional Lighting</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">Point Lighting</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">Spot Lighting</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-lighting-directional.html">방향성 조명 효과(Directional Lighting)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">점 조명 효과(Point Lighting)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">스팟 조명 효과(Spot Lighting)</a></li>
         </ul>
   <li>Structure and Organization</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">Less Code, More Fun</a></li>
-<li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">Drawing Multiple Things</a></li>
-<li><a href="/webgl/lessons/ko/webgl-scene-graph.html">Scene Graphs</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">더 적은 코드로 즐겁게 코딩하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">여러 물체를 그리는 법</a></li>
+<li><a href="/webgl/lessons/ko/webgl-scene-graph.html">장면(Scene) 그래프</a></li>
         </ul>
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-3d-geometry-lathe.html">3D Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/ko/webgl-load-obj.html">.obj 파일 로딩</a></li>
+<li><a href="/webgl/lessons/ko/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>Textures</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-data-textures.html">Data Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2-textures.html">Using 2 or More Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-cors-permission.html">Cross Origin Images</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">Perspective Correct Texture Mapping</a></li>
-<li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">Planar and Perspective Projection Mapping</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">텍스처</a></li>
+<li><a href="/webgl/lessons/ko/webgl-data-textures.html">데이터 텍스처</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2-textures.html">두개 이상의 텍스처 사용하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cors-permission.html">교차 출처 이미지(Cross Origin Image)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">원근 교정 텍스처 매핑</a></li>
+<li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">평면 및 원근 투영 매핑</a></li>
         </ul>
   <li>Rendering To A Texture</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">Render to Texture</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">텍스처에 렌더링하기</a></li>
         </ul>
   <li>Shadows</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-shadows.html">Shadows</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-shadows.html">그림자</a></li>
         </ul>
   <li>Techniques</li>
         <ul>
             <li>2D</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-2d-drawimage.html">2D - DrawImage</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-matrix-stack.html">2D - 행렬 스택</a></li>
+<li><a href="/webgl/lessons/ko/webgl-sprites.html">Sprite</a></li>
         </ul>
   <li>3D</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-cube-maps.html">Cubemaps</a></li>
-<li><a href="/webgl/lessons/ko/webgl-environment-maps.html">Environment maps</a></li>
-<li><a href="/webgl/lessons/ko/webgl-skybox.html">Skyboxes</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-cube-maps.html">큐브맵</a></li>
+<li><a href="/webgl/lessons/ko/webgl-environment-maps.html">환경맵</a></li>
+<li><a href="/webgl/lessons/ko/webgl-skybox.html">Skybox</a></li>
 <li><a href="/webgl/lessons/ko/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/ko/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/ko/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-text-html.html">Text - HTML</a></li>
-<li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">Text - Canvas 2D</a></li>
-<li><a href="/webgl/lessons/ko/webgl-text-texture.html">Text - Using a Texture</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-text-html.html">텍스트 - HTML</a></li>
+<li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">텍스트 - Canvas 2D</a></li>
+<li><a href="/webgl/lessons/ko/webgl-text-texture.html">텍스트 - 텍스처 사용</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
+        </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-gpgpu.html">GPGPU</a></li>
         </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ko/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
-  <li>Misc</li>
+  <li>Optimization</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">Setup And Installation</a></li>
-<li><a href="/webgl/lessons/ko/webgl-boilerplate.html">Boilerplate</a></li>
-<li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
-<li><a href="/webgl/lessons/ko/webgl-animation.html">Animation</a></li>
-<li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">정점 인덱스 (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">인스턴스 드로잉(Instanced Drawing)</a></li>
+        </ul>
+  <li>기타</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">설정 및 설치</a></li>
+<li><a href="/webgl/lessons/ko/webgl-boilerplate.html">보일러플레이트(Boilerplate)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">Canvas 리사이징</a></li>
+<li><a href="/webgl/lessons/ko/webgl-animation.html">애니메이션</a></li>
+<li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">점, 선, 삼각형</a></li>
 <li><a href="/webgl/lessons/ko/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ko/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
-<li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL2 and Alpha</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
-<li><a href="/webgl/lessons/ko/webgl-anti-patterns.html">Anti-Patterns</a></li>
-<li><a href="/webgl/lessons/ko/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL2 알파(Alpha)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-vs-3d-library.html">2D vs 3D 라이브러리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-anti-patterns.html">안티패턴</a></li>
+<li><a href="/webgl/lessons/ko/webgl-matrix-vs-math.html">WebGL2 행렬 vs 수학에서의 행렬</a></li>
+<li><a href="/webgl/lessons/ko/webgl-precision-issues.html">정밀도 이슈</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#screenshot">스크린샷 찍기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#preservedrawingbuffer">Canvas Clear 방지</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#tabindex">캔버스에서 키보드 입력 받기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#html-background">HTML에서 WebGL2를 배경으로 사용하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cross-platform-issues.html">Cross Platform 문제</a></li>
+<li><a href="/webgl/lessons/ko/webgl-qna.html">질문 및 답변</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-attributes.html">Attributes</a></li>
-<li><a href="/webgl/lessons/ko/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ko/webgl-texture-units.html">텍스처 유닛</a></li>
+<li><a href="/webgl/lessons/ko/webgl-framebuffers.html">Framebuffer</a></li>
+<li><a href="/webgl/lessons/ko/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/ko/webgl-references.html">참고 자료</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">github</a></li>
 </ul>
+        </div>
+    </div>
+    <div class="lesson-comments">
+        
+    <div>이슈나 버그가 있나요? <a href="https://github.com/greggman/webgl2-fundamentals/issues">깃헙에서 이슈 만들기</a>.</div>
+  
+
+        <div id="disqus_thread"></div>
+        <script>
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'webgl2fundamentals'; // required: replace example with your forum shortname
+            var disqus_identifier = 'WebGL2 보일러플레이트(Boilerplate)';
+            var disqus_title = 'WebGL2 보일러플레이트(Boilerplate)';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+                    return;
+                }
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "<a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a>님, <br>당신의 <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} 기여</a>에 감사드립니다.",
+  owner: "gfxfundamentals",
+  repo: "webgl2-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -229,7 +661,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   ga('create', 'UA-90754717-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

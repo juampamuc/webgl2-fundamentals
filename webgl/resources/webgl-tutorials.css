@@ -93,13 +93,12 @@ body.iframe {
   width: 100vw;
   height: 100vh;
   margin: 0;
-  overflow: hidden;
 }
 
 .iframe>.description {
   display: none;
 }
-.iframe .divcavnas {
+.iframe .divcanvas {
   width: 100vw;
   height: 100vh;
 }
@@ -142,5 +141,14 @@ body.iframe {
   }
 }
 
-
+@media (prefers-color-scheme: dark) {
+  #ui .ui-dark-support {
+    color: white;
+    text-shadow:
+     -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+       1px 1px 0 #000;
+  }
+}
 

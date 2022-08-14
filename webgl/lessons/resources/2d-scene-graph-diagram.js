@@ -11,8 +11,17 @@ function duplicate(src) {
   return d;
 }
 
+const darkColors = {
+  arrow: '#DDD',
+};
+const lightColors = {
+  arrow: '#000',
+};
+const darkMatcher = window.matchMedia("(prefers-color-scheme: dark)");
+let colors;
+
 function renderSceneGraph(root) {
-  const canvas = document.getElementById("c");
+  const canvas = document.querySelector("#c");
   const ctx = wrapCanvasRenderingContext2D(canvas.getContext("2d"));
   var g_update = true;
 
@@ -188,6 +197,8 @@ function renderSceneGraph(root) {
   }
 
   function drawScene() {
+    const isDarkMode = darkMatcher.matches;
+    colors = isDarkMode ? darkColors : lightColors;
     webglUtils.resizeCanvasToDisplaySize(ctx.canvas);
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
     ctx.save();
@@ -197,6 +208,7 @@ function renderSceneGraph(root) {
     ctx.font = "12px sans-serif";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
+    ctx.strokeStyle = colors.arrow;
     drawArrow(root);
     drawNode(root);
     ctx.restore();

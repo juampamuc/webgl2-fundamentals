@@ -13,8 +13,8 @@
 <!--
 for most samples webgl-utils only provides shader compiling/linking and
 canvas resizing because why clutter the examples with code that's the same in every sample.
-See http://webgl2fundamentals.org/webgl/lessons/webgl-boilerplate.html
-and http://webgl2fundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
+See https://webgl2fundamentals.org/webgl/lessons/webgl-boilerplate.html
+and https://webgl2fundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
 for webgl-utils, m3, m4, and webgl-lessons-ui.
 -->
 <script src="resources/webgl-utils.js"></script>
@@ -57,8 +57,8 @@ void main() {
 var fragmentShaderSource = `#version 300 es
 
 // fragment shaders don't have a default precision so we need
-// to pick one. mediump is a good default. It means "medium precision"
-precision mediump float;
+// to pick one. highp is a good default. It means "high precision"
+precision highp float;
 
 // our texture
 uniform sampler2D u_image0;
@@ -114,7 +114,7 @@ function main() {
 function render(images) {
   // Get A WebGL context
   /** @type {HTMLCanvasElement} */
-  var canvas = document.getElementById("canvas");
+  var canvas = document.querySelector("#canvas");
   var gl = canvas.getContext("webgl2");
   if (!gl) {
     return;
@@ -143,11 +143,11 @@ function render(images) {
   // it (2 triangles)
   var positionBuffer = gl.createBuffer();
 
-  // Turn on the attribute
-  gl.enableVertexAttribArray(positionAttributeLocation);
-
   // Bind it to ARRAY_BUFFER (think of it as ARRAY_BUFFER = positionBuffer)
   gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+
+  // Turn on the attribute
+  gl.enableVertexAttribArray(positionAttributeLocation);
 
   // Tell the attribute how to get data out of positionBuffer (ARRAY_BUFFER)
   var size = 2;          // 2 components per iteration
@@ -169,7 +169,11 @@ function render(images) {
       1.0,  0.0,
       1.0,  1.0,
   ]), gl.STATIC_DRAW);
+
+  // Turn on the attribute
   gl.enableVertexAttribArray(texCoordAttributeLocation);
+
+  // Tell the attribute how to get data out of texcoordBuffer (ARRAY_BUFFER)
   var size = 2;          // 2 components per iteration
   var type = gl.FLOAT;   // the data is 32bit floats
   var normalize = false; // don't normalize the data

@@ -14,8 +14,8 @@
 <!--
 for most samples webgl-utils only provides shader compiling/linking and
 canvas resizing because why clutter the examples with code that's the same in every sample.
-See http://webgl2fundamentals.org/webgl/lessons/webgl-boilerplate.html
-and http://webgl2fundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
+See https://webgl2fundamentals.org/webgl/lessons/webgl-boilerplate.html
+and https://webgl2fundamentals.org/webgl/lessons/webgl-resizing-the-canvas.html
 for webgl-utils, m3, m4, and webgl-lessons-ui.
 -->
 <script src="resources/webgl-utils.js"></script>
@@ -47,7 +47,7 @@ void main() {
 `;
 
 const fs = `#version 300 es
-precision mediump float;
+precision highp float;
 
 out vec4 outColor;
 
@@ -58,7 +58,6 @@ void main() {
 
 // setup GLSL program
 const program = webglUtils.createProgramFromSources(gl, [vs, fs]);
-const vertexIdLoc = gl.getAttribLocation(program, 'vertexId');
 const numVertsLoc = gl.getUniformLocation(program, 'numVerts');
 const resolutionLoc = gl.getUniformLocation(program, 'resolution');
 

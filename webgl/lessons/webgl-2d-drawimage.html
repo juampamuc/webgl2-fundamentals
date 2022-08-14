@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- this file is auto-generated from webgl/lessons/webgl-2d-drawimage.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021, GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -16,7 +16,7 @@ met:
     in the documentation and/or other materials provided with the
     distribution.
 
-*   Neither the name of Gregg Tavares. nor the names of his
+*   Neither the name of GFXFundamentals. nor the names of his
     contributors may be used to endorse or promote products derived from
     this software without specific prior written permission.
 
@@ -36,25 +36,77 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGL Implementing DrawImage" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
-<meta property="og:description" content="How to implement canvas 2d&#x27;s drawImage function in WebGL" />
-<meta property="og:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webgl2fundamentals.org" />
-<meta name="twitter:title" content="WebGL Implementing DrawImage" />
-<meta name="twitter:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html" />
-<meta name="twitter:description" content="How to implement canvas 2d&#x27;s drawImage function in WebGL" />
-<meta name="twitter:image:src" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
+<meta name="description" content="How to implement canvas 2d&#x27;s drawImage function in WebGL">
+<meta name="keywords" content="webgl webgl2 graphics">
+<meta name="thumbnail" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_en.jpg">
+
+<meta property="og:title" content="WebGL2 Implementing DrawImage">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_en.jpg">
+<meta property="og:description" content="How to implement canvas 2d&#x27;s drawImage function in WebGL">
+<meta property="og:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webgl2fundamentals.org">
+<meta name="twitter:title" content="WebGL2 Implementing DrawImage">
+<meta name="twitter:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html">
+<meta name="twitter:description" content="How to implement canvas 2d&#x27;s drawImage function in WebGL">
+<meta name="twitter:image:src" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_en.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgl2fundamentals.org/#website",
+      "url":"https://webgl2fundamentals.org/",
+      "name":"Webgl2Fundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html#primaryimage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-2d-drawimage_en.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html#webpage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html",
+      "inLanguage":"en",
+      "name":"WebGL2 Implementing DrawImage",
+      "keywords":"webgl webgl2 graphics programming",
+      "isPartOf":{
+        "@id":"https://webgl2fundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-2d-drawimage.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
 
-<title>WebGL Implementing DrawImage</title>
+<title>WebGL2 Implementing DrawImage</title>
 <link href="/webgl/lessons/resources/webgl2fundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="de" href="https://webglfundamentals.org/webgl/lessons/de/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-2d-drawimage.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-2d-drawimage.html">
+
+
+
+
 </head>
 <body>
 <div class="webgl_navbar">
@@ -62,6 +114,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <select class="language">
     <option value="/webgl/lessons/webgl-2d-drawimage.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-2d-drawimage.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-2d-drawimage.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-2d-drawimage.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-2d-drawimage.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-2d-drawimage.html" >简体中文</a>
@@ -73,12 +126,112 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </div>
 <div class="webgl_header">
   <h1><a href="/">WebGL2Fundamentals.org</a></h1>
+<style>
+#forkongithub>div {
+    background: #000;
+    color: #fff;
+    font-family: arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    pointer-events: auto;
+}
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
+    background: #c11;
+    color: #fff;
+}
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+}
+#forkongithub>div::after {
+    bottom: 1px;
+    top: auto;
+}
+
+#forkongithub{
+    z-index: 9999;
+    /* needed for firefox */
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+#forkongithub svg{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    #forkongithub>div {
+        line-height: 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+  #forkongithub {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+    #forkongithub>div {
+        font-size: 0.7rem;
+        transform: translateX(150px) rotate(45deg) translate(20px,40px);
+    }
+}
+
+</style>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
+        <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
+    </g>
+</svg>
+</a></div></div></div>
+
 </div>
 
 
 <div class="container">
   <div class="lesson-title">
-    <h1>WebGL Implementing DrawImage</h1>
+    <h1>WebGL2 Implementing DrawImage</h1>
   </div>
   <div class="lesson">
     <div class="lesson-main">
@@ -89,8 +242,8 @@ You should also be aware of how textures and texture coordinates work please rea
 <p>To implement most games in 2D requires just a single function to draw an image. Sure some 2d games
 do fancy thing with lines etc but if you only have a way to draw a 2D image on the screen
 you can pretty much make most 2d games.</p>
-<p>The Canvas 2D api has very flexible function for drawing image called <code>drawImage</code>. It has 3 versions</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, dstX, dstY);
+<p>The Canvas 2D api has very flexible function for drawing image called <code class="notranslate" translate="no">drawImage</code>. It has 3 versions</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, dstX, dstY);
 ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
 ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
                      dstX, dstY, dstWidth, dstHeight);
@@ -100,10 +253,10 @@ Sending vertices to the GPU is generally a slow operation (although there are ca
 <p>This is where the whole point of WebGL comes into play. It&#39;s all about creatively writing
 a shader and then creatively using that shader to solve your problem.</p>
 <p>Let&#39;s start with the first version</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, x, y);
-</code></pre><p>It draws an image at location <code>x, y</code> the same size as the image.
-To make a similar WebGL based funciton we could upload vertices that for <code>x, y</code>, <code>x + width, y</code>, <code>x, y + height</code>,
-and <code>x + width, y + height</code> then as we draw different images at different locations
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, x, y);
+</code></pre><p>It draws an image at location <code class="notranslate" translate="no">x, y</code> the same size as the image.
+To make a similar WebGL based function we could upload vertices that for <code class="notranslate" translate="no">x, y</code>, <code class="notranslate" translate="no">x + width, y</code>, <code class="notranslate" translate="no">x, y + height</code>,
+and <code class="notranslate" translate="no">x + width, y + height</code> then as we draw different images at different locations
 we&#39;d generate different sets of vertices. In fact <a href="webgl-fundamentals.html">that&#39;s exactly what we did in our first
 article</a>.</p>
 <p>A far more common way though is just to use a unit quad. We upload a single square 1 unit big. We
@@ -111,7 +264,7 @@ then use <a href="webgl-2d-matrices.html">matrix math</a> to scale and translate
 it ends up being at the desired place.</p>
 <p>Here&#39;s the code.</p>
 <p>First we need a simple vertex shader</p>
-<pre class="prettyprint"><code>#version 300 es
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
 
 in vec4 a_position;
 in vec2 a_texcoord;
@@ -125,8 +278,8 @@ void main() {
    v_texcoord = a_texcoord;
 }
 </code></pre><p>And a simple fragment shader</p>
-<pre class="prettyprint"><code>#version 300 es
-precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
+precision highp float;
 
 in vec2 v_texcoord;
 
@@ -138,14 +291,14 @@ void main() {
    outColor = texture(texture, v_texcoord);
 }
 </code></pre><p>And now the function</p>
-<pre class="prettyprint"><code>function drawImage(tex, texWidth, texHeight, dstX, dstY) {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawImage(tex, texWidth, texHeight, dstX, dstY) {
   gl.useProgram(program);
 
   // Setup the attributes for the quad
   gl.bindVertexArray(vao);
 
   var textureUnit = 0;
-  // The the shader we&#39;re putting the texture on texture unit 0
+  // the shader we&#39;re putting the texture on texture unit 0
   gl.uniform1i(textureLocation, textureUnit);
 
   // Bind the texture to texture unit 0
@@ -171,7 +324,7 @@ void main() {
   gl.drawArrays(gl.TRIANGLES, offset, count);
 }
 </code></pre><p>Let&#39;s load some images into textures</p>
-<pre class="prettyprint"><code>// creates a texture info { width: w, height: h, texture: tex }
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// creates a texture info { width: w, height: h, texture: tex }
 // The texture will start with 1x1 pixels and be updated
 // when the image has loaded
 function loadImageAndCreateTextureInfo(url) {
@@ -205,7 +358,7 @@ var textureInfos = [
   loadImageAndCreateTextureInfo(&#39;resources/keyboard.jpg&#39;),
 ];
 </code></pre><p>And lets draw them at random places</p>
-<pre class="prettyprint"><code>var drawInfos = [];
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var drawInfos = [];
 var numToDraw = 9;
 var speed = 60;
 for (var ii = 0; ii &lt; numToDraw; ++ii) {
@@ -264,7 +417,7 @@ function render(time) {
   var deltaTime = Math.min(0.1, now - then);
   then = now;
 
-  update(time);
+  update(deltaTime);
   draw();
 
   requestAnimationFrame(render);
@@ -277,11 +430,11 @@ requestAnimationFrame(render);
 </div>
 
 </p>
-<p>Handling version 2 of the original canvas <code>drawImage</code> function</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>Is really no different. We just use <code>dstWidth</code> and <code>dstHeight</code> instead of
-<code>texWidth</code> and <code>texHeight</code>.</p>
-<pre class="prettyprint"><code>*function drawImage(tex, texWidth, texHeight, dstX, dstY, dstWidth, dstHeight) {
+<p>Handling version 2 of the original canvas <code class="notranslate" translate="no">drawImage</code> function</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
+</code></pre><p>Is really no different. We just use <code class="notranslate" translate="no">dstWidth</code> and <code class="notranslate" translate="no">dstHeight</code> instead of
+<code class="notranslate" translate="no">texWidth</code> and <code class="notranslate" translate="no">texHeight</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(tex, texWidth, texHeight, dstX, dstY, dstWidth, dstHeight) {
 +  if (dstWidth === undefined) {
 +    dstWidth = texWidth;
 +  }
@@ -296,7 +449,7 @@ requestAnimationFrame(render);
   gl.bindVertexArray(vao);
 
   var textureUnit = 0;
-  // The the shader we&#39;re putting the texture on texture unit 0
+  // the shader we&#39;re putting the texture on texture unit 0
   gl.uniform1i(textureLocation, textureUnit);
 
   // Bind the texture to texture unit 0
@@ -328,17 +481,17 @@ requestAnimationFrame(render);
 </div>
 
 </p>
-<p>So that was easy. But what about the 3rd version of canvas <code>drawImage</code>?</p>
-<pre class="prettyprint"><code>ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
-                     dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>In order to select part of the texture we need to manipulate the texure coordinates. How
+<p>So that was easy. But what about the 3rd version of canvas <code class="notranslate" translate="no">drawImage</code>?</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
+                     dstX, dstY, dstWidth, dstHeight);t
+</code></pre><p>In order to select part of the texture we need to manipulate the texture coordinates. How
 texture coordinates work was <a href="webgl-3d-textures.html">covered in the article about textures</a>.
 In that article we manually created texture coordinates which is a very common way to do this
 but we can also create them on the fly and just like we&#39;re manipulating our positions using
-a matrix we can similarly manipluate texture coordinates using another matrix.</p>
+a matrix we can similarly manipulate texture coordinates using another matrix.</p>
 <p>Let&#39;s add a texture matrix to the vertex shader and multiply the texture coordinates
 by this texture matrix.</p>
-<pre class="prettyprint"><code>#version 300 es
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
 
 in vec4 a_position;
 in vec2 a_texcoord;
@@ -353,12 +506,12 @@ void main() {
 *   v_texcoord = (u_textureMatrix * vec4(a_texcoord, 0, 1)).xy;
 }
 </code></pre><p>Now we need to look up the location of the texture matrix</p>
-<pre class="prettyprint"><code>var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
 +var textureMatrixLocation = gl.getUniformLocation(program, &quot;u_textureMatrix&quot;);
-</code></pre><p>And inside <code>drawImage</code> we need to set it so it will select the part of the texture we want.
+</code></pre><p>And inside <code class="notranslate" translate="no">drawImage</code> we need to set it so it will select the part of the texture we want.
 We know the texture coordinates are also effectively a unit quad so it&#39;s very similar to
 what we&#39;ve already done for the positions.</p>
-<pre class="prettyprint"><code>*function drawImage(
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(
 *    tex, texWidth, texHeight,
 *    srcX, srcY, srcWidth, srcHeight,
 *    dstX, dstY, dstWidth, dstHeight) {
@@ -421,9 +574,9 @@ what we&#39;ve already done for the positions.</p>
 </div>
 
 </p>
-<p>Unlike the canvas 2D api our WebGL version handles cases the canvas 2D <code>drawImage</code> does not.</p>
-<p>For one we can pass in a negative width or height for either source or dest. A negative <code>srcWidth</code>
-will select pixels to the left of <code>srcX</code>. A negative <code>dstWidth</code> will draw to the left of <code>dstX</code>.
+<p>Unlike the canvas 2D api our WebGL version handles cases the canvas 2D <code class="notranslate" translate="no">drawImage</code> does not.</p>
+<p>For one we can pass in a negative width or height for either source or dest. A negative <code class="notranslate" translate="no">srcWidth</code>
+will select pixels to the left of <code class="notranslate" translate="no">srcX</code>. A negative <code class="notranslate" translate="no">dstWidth</code> will draw to the left of <code class="notranslate" translate="no">dstX</code>.
 In the canvas 2D api these are errors at best or undefined behavior at worst.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-04.html"></iframe>
@@ -434,7 +587,7 @@ In the canvas 2D api these are errors at best or undefined behavior at worst.</p
 <p>Another is since we&#39;re using a matrix we can do <a href="webgl-2d-matrices.html">any matrix math we want</a>.</p>
 <p>For example we could rotate the texture coordinates around the center of the texture.</p>
 <p>Changing the texture matrix code to this</p>
-<pre class="prettyprint"><code>*  // just like a 2d projection matrix except in texture space (0 to 1)
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*  // just like a 2d projection matrix except in texture space (0 to 1)
 *  // instead of clip space. This matrix puts us in pixel space.
 *  var texMatrix = m4.scaling(1 / texWidth, 1 / texHeight, 1);
 *
@@ -459,11 +612,11 @@ In the canvas 2D api these are errors at best or undefined behavior at worst.</p
 
 </p>
 <p>you can see one problem which is that because of the rotation sometimes we see past the
-edge of the texture. As it&#39;s set to <code>CLAMP_TO_EDGE</code> the edge just gets repeated.</p>
+edge of the texture. As it&#39;s set to <code class="notranslate" translate="no">CLAMP_TO_EDGE</code> the edge just gets repeated.</p>
 <p>We could fix that by discarding any pixels outside of the 0 to 1 range inside the shader.
-<code>discard</code> exits the shader immediately without writing a pixel.</p>
-<pre class="prettyprint"><code>#version 300 es
-precision mediump float;
+<code class="notranslate" translate="no">discard</code> exits the shader immediately without writing a pixel.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
+precision highp float;
 
 in vec2 v_texcoord;
 
@@ -488,8 +641,8 @@ void main() {
 
 </p>
 <p>or maybe you&#39;d like to use a solid color when the texture coordinates are outside the texture</p>
-<pre class="prettyprint"><code>#version 300 es
-precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
+precision highp float;
 
 in vec2 v_texcoord;
 
@@ -555,6 +708,7 @@ work just the same as before.</p>
         <select class="language">
     <option value="/webgl/lessons/webgl-2d-drawimage.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-2d-drawimage.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-2d-drawimage.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-2d-drawimage.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-2d-drawimage.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-2d-drawimage.html" >简体中文</a>
@@ -568,6 +722,7 @@ work just the same as before.</p>
 <li><a href="/webgl/lessons/webgl-fundamentals.html">Fundamentals</a></li>
 <li><a href="/webgl/lessons/webgl-how-it-works.html">How It Works</a></li>
 <li><a href="/webgl/lessons/webgl-shaders-and-glsl.html">Shaders and GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL2 State Diagram</a></li>
         </ul>
   <li>WebGL2 vs WebGL1</li>
         <ul>
@@ -590,7 +745,7 @@ work just the same as before.</p>
   <li>3D</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-orthographic.html">Orthographic 3D</a></li>
-<li><a href="/webgl/lessons/webgl-3d-perspective.html">WebGL2 3D Perspective</a></li>
+<li><a href="/webgl/lessons/webgl-3d-perspective.html">3D Perspective</a></li>
 <li><a href="/webgl/lessons/webgl-3d-camera.html">3D - Cameras</a></li>
 <li><a href="/webgl/lessons/webgl-matrix-naming.html">3D - Matrix Naming</a></li>
         </ul>
@@ -609,6 +764,8 @@ work just the same as before.</p>
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-geometry-lathe.html">3D Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj.html">Loading .obj files</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>Textures</li>
         <ul>
@@ -633,6 +790,7 @@ work just the same as before.</p>
         <ul>
           <li><a href="/webgl/lessons/webgl-2d-drawimage.html">2D - DrawImage</a></li>
 <li><a href="/webgl/lessons/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/webgl-sprites.html">Sprites</a></li>
         </ul>
   <li>3D</li>
         <ul>
@@ -641,6 +799,7 @@ work just the same as before.</p>
 <li><a href="/webgl/lessons/webgl-skybox.html">Skyboxes</a></li>
 <li><a href="/webgl/lessons/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
@@ -649,12 +808,22 @@ work just the same as before.</p>
 <li><a href="/webgl/lessons/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
         </ul>
   <li>Misc</li>
         <ul>
@@ -663,36 +832,49 @@ work just the same as before.</p>
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL2 and Alpha</a></li>
 <li><a href="/webgl/lessons/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
 <li><a href="/webgl/lessons/webgl-anti-patterns.html">Anti-Patterns</a></li>
-<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL2 Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-precision-issues.html">Precision Issues</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#screenshot">Taking a screenshot</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL2 as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">github</a></li>
 </ul>
         </div>
     </div>
     <div class="lesson-comments">
-        <div>Questions? <a href="http://stackoverflow.com/questions/tagged/webgl2">Ask on stackoverflow</a>.</div>
-        <div>Issue/Bug? <a href="http://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+        
+    <div>Issue/Bug? <a href="https://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+    <div class="lesson-comment-notes">
+       Use <b>&lt;pre&gt;&lt;code&gt;</b>code goes here<b>&lt;/code&gt;&lt;/pre&gt;</b> for code blocks
+    </div>
+  
 
         <div id="disqus_thread"></div>
-        <script type="text/javascript">
+        <script>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'webgl2fundamentals'; // required: replace example with your forum shortname
-            var disqus_identifier = 'WebGL Implementing DrawImage';
-            var disqus_title = 'WebGL Implementing DrawImage';
+            var disqus_identifier = 'WebGL2 Implementing DrawImage';
+            var disqus_title = 'WebGL2 Implementing DrawImage';
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
@@ -704,17 +886,45 @@ work just the same as before.</p>
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl2-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -722,7 +932,7 @@ work just the same as before.</p>
 
   ga('create', 'UA-90754717-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

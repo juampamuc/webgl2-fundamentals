@@ -1,5 +1,10 @@
-/* global require module */
+/*eslint-env node*/
+
 'use strict';
+
+process.on('unhandledRejection', up => {
+  throw up;
+});
 
 const fs = require('fs');
 const path = require('path');
@@ -43,7 +48,13 @@ module.exports = function(grunt) {
       examples: {
         src: [
           'webgl/*.html',
+          '!webgl/webgl-qna-*.html',
           // 'webgl/lessons/*.md',
+        ],
+      },
+      diagram: {
+        src: [
+          'webgl/lessons/resources/webgl-state-diagram/*.js',
         ],
       },
     },
@@ -86,6 +97,7 @@ module.exports = function(grunt) {
         files: [
           'webgl/**',
           '3rdparty/**',
+          'node_modules/@gfxfundamentals/live-editor/src/**',
         ],
         tasks: ['copy'],
         options: {
@@ -107,10 +119,17 @@ module.exports = function(grunt) {
   let changedFiles = {};
   const onChange = grunt.util._.debounce(function() {
     grunt.config('copy.main.files', Object.keys(changedFiles).filter(noMds).map((file) => {
-      return {
+      const copy = {
         src: file,
         dest: 'out/',
       };
+      if (file.indexOf('live-editor') >= 0) {
+        copy.cwd = `${path.dirname(file)}/`;
+        copy.src = path.basename(file);
+        copy.expand = true;
+        copy.dest = 'out/webgl/resources/';
+      }
+      return copy;
     }));
     grunt.config('buildlesson.main.files', Object.keys(changedFiles).filter(mdsOnly).map((file) => {
       return {
@@ -126,12 +145,28 @@ module.exports = function(grunt) {
 
   const buildSettings = {
     outDir: 'out',
-    baseUrl: 'http://webgl2fundamentals.org',
+    baseUrl: 'https://webgl2fundamentals.org',
     rootFolder: 'webgl',
     lessonGrep: 'webgl*.md',
     siteName: 'WebGL2Fundamentals',
     siteThumbnail: 'webgl2fundamentals.jpg',  // in rootFolder/lessons/resources
     templatePath: 'build/templates',
+    owner: 'gfxfundamentals',
+    repo: 'webgl2-fundamentals',
+    thumbnailOptions: {
+      thumbnailBackground: 'webgl2fundamentals.jpg',
+      text: [
+        {
+          font: 'bold 100px lesson-font',
+          verticalSpacing: 100,
+          offset: [100, 120],
+          textAlign: 'left',
+          shadowOffset: [15, 15],
+          strokeWidth: 15,
+          textWrapWidth: 1000,
+        },
+      ],
+    },
   };
 
   // just the hackiest way to get this working.
@@ -151,8 +186,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('buildlessons', function() {
-    var buildStuff = require('@gfxfundamentals/lesson-builder');
-    var finish = this.async();
+    const buildStuff = require('@gfxfundamentals/lesson-builder');
+    const finish = this.async();
     buildStuff(buildSettings).finally(finish);
   });
 

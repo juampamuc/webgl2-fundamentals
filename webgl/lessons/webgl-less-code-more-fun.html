@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- this file is auto-generated from webgl/lessons/webgl-less-code-more-fun.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021, GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -16,7 +16,7 @@ met:
     in the documentation and/or other materials provided with the
     distribution.
 
-*   Neither the name of Gregg Tavares. nor the names of his
+*   Neither the name of GFXFundamentals. nor the names of his
     contributors may be used to endorse or promote products derived from
     this software without specific prior written permission.
 
@@ -36,25 +36,77 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGL - Less Code, More Fun" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
-<meta property="og:description" content="Ways to make programming WebGL less verbose" />
-<meta property="og:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webgl2fundamentals.org" />
-<meta name="twitter:title" content="WebGL - Less Code, More Fun" />
-<meta name="twitter:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html" />
-<meta name="twitter:description" content="Ways to make programming WebGL less verbose" />
-<meta name="twitter:image:src" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
+<meta name="description" content="Ways to make programming WebGL less verbose">
+<meta name="keywords" content="webgl webgl2 graphics">
+<meta name="thumbnail" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_en.jpg">
+
+<meta property="og:title" content="WebGL2 - Less Code, More Fun">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_en.jpg">
+<meta property="og:description" content="Ways to make programming WebGL less verbose">
+<meta property="og:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webgl2fundamentals.org">
+<meta name="twitter:title" content="WebGL2 - Less Code, More Fun">
+<meta name="twitter:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html">
+<meta name="twitter:description" content="Ways to make programming WebGL less verbose">
+<meta name="twitter:image:src" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_en.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgl2fundamentals.org/#website",
+      "url":"https://webgl2fundamentals.org/",
+      "name":"Webgl2Fundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html#primaryimage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-less-code-more-fun_en.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html#webpage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html",
+      "inLanguage":"en",
+      "name":"WebGL2 - Less Code, More Fun",
+      "keywords":"webgl webgl2 graphics programming",
+      "isPartOf":{
+        "@id":"https://webgl2fundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-less-code-more-fun.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
 
-<title>WebGL - Less Code, More Fun</title>
+<title>WebGL2 - Less Code, More Fun</title>
 <link href="/webgl/lessons/resources/webgl2fundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="de" href="https://webglfundamentals.org/webgl/lessons/de/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-less-code-more-fun.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-less-code-more-fun.html">
+
+
+
+
 </head>
 <body>
 <div class="webgl_navbar">
@@ -62,6 +114,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <select class="language">
     <option value="/webgl/lessons/webgl-less-code-more-fun.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-less-code-more-fun.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-less-code-more-fun.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-less-code-more-fun.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-less-code-more-fun.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-less-code-more-fun.html" >简体中文</a>
@@ -73,12 +126,112 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </div>
 <div class="webgl_header">
   <h1><a href="/">WebGL2Fundamentals.org</a></h1>
+<style>
+#forkongithub>div {
+    background: #000;
+    color: #fff;
+    font-family: arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    pointer-events: auto;
+}
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
+    background: #c11;
+    color: #fff;
+}
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+}
+#forkongithub>div::after {
+    bottom: 1px;
+    top: auto;
+}
+
+#forkongithub{
+    z-index: 9999;
+    /* needed for firefox */
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+#forkongithub svg{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    #forkongithub>div {
+        line-height: 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+  #forkongithub {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+    #forkongithub>div {
+        font-size: 0.7rem;
+        transform: translateX(150px) rotate(45deg) translate(20px,40px);
+    }
+}
+
+</style>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
+        <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
+    </g>
+</svg>
+</a></div></div></div>
+
 </div>
 
 
 <div class="container">
   <div class="lesson-title">
-    <h1>WebGL - Less Code, More Fun</h1>
+    <h1>WebGL2 - Less Code, More Fun</h1>
   </div>
   <div class="lesson">
     <div class="lesson-main">
@@ -91,7 +244,7 @@ uniforms and attributes and the code required to look up their locations can be 
 <p>Assume we&#39;ve got the <a href="webgl-boilerplate.html">typical boilerplate WebGL code for
 compiling and linking shader programs</a>. Given a set of shaders like this.</p>
 <p>vertex shader:</p>
-<pre class="prettyprint"><code>#version 300 es
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
 
 uniform mat4 u_worldViewProjection;
 uniform vec3 u_lightWorldPos;
@@ -118,8 +271,8 @@ void main() {
   gl_Position = v_position;
 }
 </code></pre><p>fragment shader:</p>
-<pre class="prettyprint"><code>#version 300 es
-precision mediump float;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
+precision highp float;
 
 in vec4 v_position;
 in vec2 v_texCoord;
@@ -144,7 +297,7 @@ vec4 lit(float l ,float h, float m) {
 }
 
 void main() {
-  vec4 diffuseColor = texture2D(u_diffuse, v_texCoord);
+  vec4 diffuseColor = texture(u_diffuse, v_texCoord);
   vec3 a_normal = normalize(v_normal);
   vec3 surfaceToLight = normalize(v_surfaceToLight);
   vec3 surfaceToView = normalize(v_surfaceToView);
@@ -157,7 +310,7 @@ void main() {
     diffuseColor.a);
 }
 </code></pre><p>You&#39;d end up having to write code like this to look up and set all the various values to draw.</p>
-<pre class="prettyprint"><code>// At initialization time
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// At initialization time
 var u_worldViewProjectionLoc   = gl.getUniformLocation(program, &quot;u_worldViewProjection&quot;);
 var u_lightWorldPosLoc         = gl.getUniformLocation(program, &quot;u_lightWorldPos&quot;);
 var u_worldLoc                 = gl.getUniformLocation(program, &quot;u_world&quot;);
@@ -227,7 +380,7 @@ gl.drawArrays(...);
 the uniforms, attributes and their locations and then setup functions to set them for us.
 We can then pass in JavaScript objects to set our settings much more easily.
 If that&#39;s clear as mud well, our code would look something like this</p>
-<pre class="prettyprint"><code>// At initialiation time
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// At initialization time
 var uniformSetters = twgl.createUniformSetters(gl, program);
 var attribSetters  = twgl.createAttributeSetters(gl, program);
 
@@ -267,7 +420,7 @@ twgl.setUniforms(uniformSetters, uniforms);
 gl.drawArrays(...);
 </code></pre><p>That seems a heck of a lot smaller, easier, and less code to me.</p>
 <p>You can even use multiple JavaScript objects for the uniforms if it suits you. For example</p>
-<pre class="prettyprint"><code>// At initialiation time
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// At initialization time
 var uniformSetters = twgl.createUniformSetters(gl, program);
 var attribSetters  = twgl.createAttributeSetters(gl, program);
 
@@ -344,10 +497,10 @@ objects.forEach(function(object) {
 </div>
 
 </p>
-<p>Let&#39;s take it a tiny step further. In the code above we setup a variable <code>attribs</code> with the buffers we created.
+<p>Let&#39;s take it a tiny step further. In the code above we setup a variable <code class="notranslate" translate="no">attribs</code> with the buffers we created.
 Not shown is the code to setup those buffers. For example if you want to make positions, normals and texture
 coordinates you might need code like this</p>
-<pre class="prettyprint"><code>// a single triangle
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// a single triangle
 var positions = [0, -10, 0, 10, 10, 0, -10, 10, 0];
 var texcoords = [0.5, 0, 1, 1, 0, 1];
 var normals   = [0, 0, 1, 0, 0, 1, 0, 0, 1];
@@ -364,7 +517,7 @@ var normalBuffer = gl.createBuffer();
 gl.bindBuffer(gl.ARRAY_BUFFER, normalBuffer);
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normals), gl.STATIC_DRAW);
 </code></pre><p>Looks like a pattern we can simplify as well.</p>
-<pre class="prettyprint"><code>// a single triangle
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// a single triangle
 var arrays = {
    position: { numComponents: 3, data: [0, -10, 0, 10, 10, 0, -10, 10, 0], },
    texcoord: { numComponents: 2, data: [0.5, 0, 1, 1, 0, 1],               },
@@ -381,11 +534,11 @@ var vao = twgl.createVAOFromBufferInfo(gl, setters, bufferInfo);
 </div>
 
 </p>
-<p>This will even work if we have indices. <code>createVAOFromBufferInfo</code>
-will set all the attributes and setup the <code>ELEMENT_ARRAY_BUFFER</code>
-with your <code>indices</code> so when you bind that VAO you can call
-<code>gl.drawElements</code>.</p>
-<pre class="prettyprint"><code>// an indexed quad
+<p>This will even work if we have indices. <code class="notranslate" translate="no">createVAOFromBufferInfo</code>
+will set all the attributes and setup the <code class="notranslate" translate="no">ELEMENT_ARRAY_BUFFER</code>
+with your <code class="notranslate" translate="no">indices</code> so when you bind that VAO you can call
+<code class="notranslate" translate="no">gl.drawElements</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// an indexed quad
 var arrays = {
    position: { numComponents: 3, data: [0, 0, 0, 10, 0, 0, 0, 10, 0, 10, 10, 0], },
    texcoord: { numComponents: 2, data: [0, 0, 0, 1, 1, 0, 1, 1],                 },
@@ -393,10 +546,10 @@ var arrays = {
    indices:  { numComponents: 3, data: [0, 1, 2, 1, 2, 3],                       },
 };
 
-var bufferInfo = twgl.createBufferInfoFromTypedArray(gl, arrays);
+var bufferInfo = twgl.createBufferInfoFromArrays(gl, arrays);
 var vao = twgl.createVAOFromBufferInfo(gl, setters, bufferInfo);
-</code></pre><p>and at render time we can call <code>gl.drawElements</code> instead of <code>gl.drawArrays</code>.</p>
-<pre class="prettyprint"><code>...
+</code></pre><p>and at render time we can call <code class="notranslate" translate="no">gl.drawElements</code> instead of <code class="notranslate" translate="no">gl.drawArrays</code>.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
 
 // Draw the geometry.
 gl.drawElements(gl.TRIANGLES, bufferInfo.numElements, gl.UNSIGNED_SHORT, 0);
@@ -407,10 +560,10 @@ gl.drawElements(gl.TRIANGLES, bufferInfo.numElements, gl.UNSIGNED_SHORT, 0);
 </div>
 
 </p>
-<p>Finally we can go what I consider possibly too far. Given <code>position</code> almost always has 3 components (x, y, z)
-and <code>texcoords</code> almost always 2, indices 3, and normals 3, we can just let the system guess the number
+<p>Finally we can go what I consider possibly too far. Given <code class="notranslate" translate="no">position</code> almost always has 3 components (x, y, z)
+and <code class="notranslate" translate="no">texcoords</code> almost always 2, indices 3, and normals 3, we can just let the system guess the number
 of components.</p>
-<pre class="prettyprint"><code>// an indexed quad
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// an indexed quad
 var arrays = {
    position: [0, 0, 0, 10, 0, 0, 0, 10, 0, 10, 10, 0],
    texcoord: [0, 0, 0, 1, 1, 0, 1, 1],
@@ -430,18 +583,18 @@ guess 2 and be wrong. Of course if it guesses wrong you can just specify it like
 I guess I worry if the guessing code changes people&#39;s stuff might break. It&#39;s up to you. Some people
 like things to be what they consider as simple as possible.</p>
 <p>Why don&#39;t we look at the attributes on the shader program to figure out the number of components?
-That&#39;s because it&#39;s common to supply 3 components (x, y, z) from a buffer but use a <code>vec4</code> in
-the shader. For attributes WebGL will set <code>w = 1</code> automatically. But that means we can&#39;t easily
+That&#39;s because it&#39;s common to supply 3 components (x, y, z) from a buffer but use a <code class="notranslate" translate="no">vec4</code> in
+the shader. For attributes WebGL will set <code class="notranslate" translate="no">w = 1</code> automatically. But that means we can&#39;t easily
 know the user&#39;s intent since what they declared in their shader might not match the number of
 components they provide.</p>
 <p>Looking for more patterns there&#39;s this</p>
-<pre class="prettyprint"><code>var program = twgl.createProgramFromSources(gl, [vs, fs]);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var program = twgl.createProgramFromSources(gl, [vs, fs]);
 var uniformSetters = twgl.createUniformSetters(gl, program);
 var attribSetters  = twgl.createAttributeSetters(gl, program);
 </code></pre><p>Let&#39;s simplify that too into just</p>
-<pre class="prettyprint"><code>var programInfo = twgl.createProgramInfo(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var programInfo = twgl.createProgramInfo(gl, [&quot;vertexshader&quot;, &quot;fragmentshader&quot;]);
 </code></pre><p>Which returns something like</p>
-<pre class="prettyprint"><code>programInfo = {
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">programInfo = {
    program: WebGLProgram,  // program we just compiled
    uniformSetters: ...,    // setters as returned from createUniformSetters,
    attribSetters: ...,     // setters as returned from createAttribSetters,
@@ -455,15 +608,15 @@ multiple programs since it automatically keeps the setters with the program they
 
 </p>
 <p>One more, sometimes we have data that has no indices and we have to call
-<code>gl.drawArrays</code>. Other times do have indices and we have to call <code>gl.drawElements</code>.
-Given the data we have we can easily check which by looking at <code>bufferInfo.indices</code>.
-If it exists we need to call <code>gl.drawElements</code>. If not we need to call <code>gl.drawArrays</code>.
-So there&#39;s a function, <code>twgl.drawBufferInfo</code> that does that. It&#39;s used like this</p>
-<pre class="prettyprint"><code>twgl.drawBufferInfo(gl, bufferInfo);
+<code class="notranslate" translate="no">gl.drawArrays</code>. Other times do have indices and we have to call <code class="notranslate" translate="no">gl.drawElements</code>.
+Given the data we have we can easily check which by looking at <code class="notranslate" translate="no">bufferInfo.indices</code>.
+If it exists we need to call <code class="notranslate" translate="no">gl.drawElements</code>. If not we need to call <code class="notranslate" translate="no">gl.drawArrays</code>.
+So there&#39;s a function, <code class="notranslate" translate="no">twgl.drawBufferInfo</code> that does that. It&#39;s used like this</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">twgl.drawBufferInfo(gl, bufferInfo);
 </code></pre><p>If you don&#39;t pass a 3rd parameter for the type of primitive to draw it assumes
-<code>gl.TRIANGLES</code>.</p>
+<code class="notranslate" translate="no">gl.TRIANGLES</code>.</p>
 <p>Here&#39;s an example were we have a non-indexed triangle and an indexed quad. Because
-we&#39;re using <code>twgl.drawBufferInfo</code> the code doesn&#39;t have to change when we
+we&#39;re using <code class="notranslate" translate="no">twgl.drawBufferInfo</code> the code doesn&#39;t have to change when we
 switch data.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-less-code-more-fun-drawbufferinfo.html"></iframe>
@@ -476,19 +629,19 @@ For the lessons on these tutorials though I&#39;ve felt like I have to use the s
 ways so people don&#39;t get confused about what is WebGL and what is my own style. At some point
 though showing all the steps gets in the way of the point so going forward some lessons will
 be using this style.</p>
-<p>Feel free to use this style in your own code. The functions <code>twgl.createProgramInfo</code>,
-<code>twgl.createVAOAndSetAttributes</code>, <code>twgl.createBufferInfoFromArrays</code>, and <code>twgl.setUniforms</code>
-etc... are part of a library I wrote based off these ideas. <a href="http://twgljs.org">It&#39;s called <code>TWGL</code></a>.
-It rhymes with wiggle and it stands for <code>Tiny WebGL</code>.</p>
+<p>Feel free to use this style in your own code. The functions <code class="notranslate" translate="no">twgl.createProgramInfo</code>,
+<code class="notranslate" translate="no">twgl.createVAOAndSetAttributes</code>, <code class="notranslate" translate="no">twgl.createBufferInfoFromArrays</code>, and <code class="notranslate" translate="no">twgl.setUniforms</code>
+etc... are part of a library I wrote based off these ideas. <a href="https://twgljs.org">It&#39;s called <code class="notranslate" translate="no">TWGL</code></a>.
+It rhymes with wiggle and it stands for <code class="notranslate" translate="no">Tiny WebGL</code>.</p>
 <p>Next up, <a href="webgl-drawing-multiple-things.html">drawing multiple things</a>.</p>
 <div class="webgl_bottombar">
 <h3>Can we use the setters directly?</h3>
 <p>
-For those of you familar with JavaScript you might be wondering if you can use the setters
+For those of you familiar with JavaScript you might be wondering if you can use the setters
 directly like this.
 </p>
 <pre class="prettyprint">
-// At initialiation time
+// At initialization time
 var uniformSetters = twgl.createUniformSetters(program);
 
 // At draw time
@@ -501,7 +654,7 @@ is appearing is to simplify my shaders. For example I might change the fragment 
 to the simplest thing possible</p>
 <pre class="prettyprint showlinemods">
 #version 300 es
-precision mediump float;
+precision highp float;
 
 in vec4 v_position;
 in vec2 v_texCoord;
@@ -540,15 +693,15 @@ void main() {
 *  outColor = vec4(0,1,0,1);  // &lt;!--- just green
 }
 </pre>
-<p>Notice I just added a line that sets <code>outColor</code> to a constant color.
+<p>Notice I just added a line that sets <code class="notranslate" translate="no">outColor</code> to a constant color.
 Most drivers will see that none of the previous lines in the file actually contribute
 to the result. As such they'll optimize out all of our uniforms. The next time we run the program
-when we call <code>twgl.createUniformSetters</code> it won't create a setter for <code>u_ambient</code> so the
-code above that calls <code>uniformSetters.u_ambient()</code> directly will fail with</p>
+when we call <code class="notranslate" translate="no">twgl.createUniformSetters</code> it won't create a setter for <code class="notranslate" translate="no">u_ambient</code> so the
+code above that calls <code class="notranslate" translate="no">uniformSetters.u_ambient()</code> directly will fail with</p>
 <pre class="prettyprint">
 TypeError: undefined is not a function
 </pre>
-<p><code>twgl.setUniforms</code> solves that issue. It only sets those uniforms that actually exist</p>
+<p><code class="notranslate" translate="no">twgl.setUniforms</code> solves that issue. It only sets those uniforms that actually exist</p>
 </div>
 
 
@@ -557,6 +710,7 @@ TypeError: undefined is not a function
         <select class="language">
     <option value="/webgl/lessons/webgl-less-code-more-fun.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-less-code-more-fun.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-less-code-more-fun.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-less-code-more-fun.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-less-code-more-fun.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-less-code-more-fun.html" >简体中文</a>
@@ -570,6 +724,7 @@ TypeError: undefined is not a function
 <li><a href="/webgl/lessons/webgl-fundamentals.html">Fundamentals</a></li>
 <li><a href="/webgl/lessons/webgl-how-it-works.html">How It Works</a></li>
 <li><a href="/webgl/lessons/webgl-shaders-and-glsl.html">Shaders and GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL2 State Diagram</a></li>
         </ul>
   <li>WebGL2 vs WebGL1</li>
         <ul>
@@ -592,7 +747,7 @@ TypeError: undefined is not a function
   <li>3D</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-orthographic.html">Orthographic 3D</a></li>
-<li><a href="/webgl/lessons/webgl-3d-perspective.html">WebGL2 3D Perspective</a></li>
+<li><a href="/webgl/lessons/webgl-3d-perspective.html">3D Perspective</a></li>
 <li><a href="/webgl/lessons/webgl-3d-camera.html">3D - Cameras</a></li>
 <li><a href="/webgl/lessons/webgl-matrix-naming.html">3D - Matrix Naming</a></li>
         </ul>
@@ -611,6 +766,8 @@ TypeError: undefined is not a function
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-geometry-lathe.html">3D Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj.html">Loading .obj files</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>Textures</li>
         <ul>
@@ -635,6 +792,7 @@ TypeError: undefined is not a function
         <ul>
           <li><a href="/webgl/lessons/webgl-2d-drawimage.html">2D - DrawImage</a></li>
 <li><a href="/webgl/lessons/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/webgl-sprites.html">Sprites</a></li>
         </ul>
   <li>3D</li>
         <ul>
@@ -643,6 +801,7 @@ TypeError: undefined is not a function
 <li><a href="/webgl/lessons/webgl-skybox.html">Skyboxes</a></li>
 <li><a href="/webgl/lessons/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
@@ -651,12 +810,22 @@ TypeError: undefined is not a function
 <li><a href="/webgl/lessons/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
         </ul>
   <li>Misc</li>
         <ul>
@@ -665,36 +834,49 @@ TypeError: undefined is not a function
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL2 and Alpha</a></li>
 <li><a href="/webgl/lessons/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
 <li><a href="/webgl/lessons/webgl-anti-patterns.html">Anti-Patterns</a></li>
-<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL2 Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-precision-issues.html">Precision Issues</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#screenshot">Taking a screenshot</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL2 as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">github</a></li>
 </ul>
         </div>
     </div>
     <div class="lesson-comments">
-        <div>Questions? <a href="http://stackoverflow.com/questions/tagged/webgl2">Ask on stackoverflow</a>.</div>
-        <div>Issue/Bug? <a href="http://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+        
+    <div>Issue/Bug? <a href="https://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+    <div class="lesson-comment-notes">
+       Use <b>&lt;pre&gt;&lt;code&gt;</b>code goes here<b>&lt;/code&gt;&lt;/pre&gt;</b> for code blocks
+    </div>
+  
 
         <div id="disqus_thread"></div>
-        <script type="text/javascript">
+        <script>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'webgl2fundamentals'; // required: replace example with your forum shortname
-            var disqus_identifier = 'WebGL - Less Code, More Fun';
-            var disqus_title = 'WebGL - Less Code, More Fun';
+            var disqus_identifier = 'WebGL2 - Less Code, More Fun';
+            var disqus_title = 'WebGL2 - Less Code, More Fun';
 
             /* * * DON'T EDIT BELOW THIS LINE * * */
             (function() {
@@ -706,17 +888,45 @@ TypeError: undefined is not a function
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl2-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -724,7 +934,7 @@ TypeError: undefined is not a function
 
   ga('create', 'UA-90754717-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

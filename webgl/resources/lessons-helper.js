@@ -1,5 +1,5 @@
 /*
- * Copyright 2012, Gregg Tavares.
+ * Copyright 2021, GFXFundamentals.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * copyright notice, this list of conditions and the following disclaimer
  * in the documentation and/or other materials provided with the
  * distribution.
- *     * Neither the name of Gregg Tavares. nor the names of his
+ *     * Neither the name of GFXFundamentals. nor the names of his
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  *
@@ -65,7 +65,9 @@
         // eslint-disable-line
       }
       try {
-        document.body.className = 'iframe';
+        if (document.body) {
+          document.body.className = 'iframe';
+        }
       } catch (e) {
         // eslint-disable-line
       }
@@ -77,19 +79,15 @@
   }
 
   /**
-   * Creates a webgl context. If creation fails it will
-   * change the contents of the container of the <canvas>
-   * tag to an error message with the correct links for WebGL.
+   * Changes canvas to message about needing webgl
    * @param {HTMLCanvasElement} canvas. The canvas element to
    *     create a context from.
-   * @param {WebGLContextCreationAttirbutes} opt_attribs Any
-   *     creation attributes you want to pass in.
-   * @return {WebGLRenderingContext} The created context.
    * @memberOf module:webgl-utils
    */
-  function showNeedWebGL(canvas) {
+  function showNeedWebGL(canvas, type) {
     const doc = canvas.ownerDocument;
     if (doc) {
+      const isWebGL2 = type === 'webgl2';
       const temp = doc.createElement('div');
       temp.innerHTML = `
         <div style="
@@ -106,8 +104,8 @@
           align-items: center;
         ">
           <div style="text-align: center;">
-            It doesn't appear your browser supports WebGL.<br/>
-            <a href="http://get.webgl.org" target="_blank">Click here for more information.</a>
+            It doesn't appear your browser supports ${isWebGL2 ? 'WebGL2' : 'WebGL'}.<br/>
+            <a href="https://get.webgl.org${isWebGL2 ? '/webgl2/' : ''}" target="_blank">Click here for more information.</a>
           </div>
         </div>
       `;
@@ -119,19 +117,31 @@
   const origConsole = {};
 
   function setupConsole() {
+    const style = document.createElement('style');
+    style.innerText = `
+    .console {
+      font-family: monospace;
+      font-size: medium;
+      max-height: 50%;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      overflow: auto;
+      background: rgba(221, 221, 221, 0.9);
+    }
+    .console .console-line {
+      white-space: pre-line;
+    }
+    .console .log .warn {
+      color: black;
+    }
+    .console .error {
+      color: red;
+    }
+    `;
     const parent = document.createElement('div');
     parent.className = 'console';
-    Object.assign(parent.style, {
-      fontFamily: 'monospace',
-      fontSize: 'medium',
-      maxHeight: '50%',
-      position: 'fixed',
-      bottom: 0,
-      left: 0,
-      width: '100%',
-      overflow: 'auto',
-      background: 'rgba(221, 221, 221, 0.9)',
-    });
     const toggle = document.createElement('div');
     let show = false;
     Object.assign(toggle.style, {
@@ -155,27 +165,27 @@
     const lines = [];
     let added = false;
 
-    function addLine(type, str, color, prefix) {
+    function addLine(type, str, prefix) {
       const div = document.createElement('div');
-      div.textContent = prefix + str;
-      div.className = type;
-      div.style.color = color;
+      div.textContent = (prefix + str) || ' ';
+      div.className = `console-line ${type}`;
       parent.appendChild(div);
       lines.push(div);
       if (!added) {
         added = true;
+        document.body.appendChild(style);
         document.body.appendChild(parent);
         document.body.appendChild(toggle);
       }
       // scrollIntoView only works in Chrome
       // In Firefox and Safari scrollIntoView inside an iframe moves
-      // that element into the view. It should argably only move that
+      // that element into the view. It should arguably only move that
       // element inside the iframe itself, otherwise that's giving
       // any random iframe control to bring itself into view against
       // the parent's wishes.
       //
       // note that even if we used a solution (which is to manually set
-      // scrollTop) there's a UI issue that if the user manaully scrolls
+      // scrollTop) there's a UI issue that if the user manually scrolls
       // we want to stop scrolling automatically and if they move back
       // to the bottom we want to pick up scrolling automatically.
       // Kind of a PITA so TBD
@@ -183,26 +193,26 @@
       // div.scrollIntoView();
     }
 
-    function addLines(type, str, color, prefix) {
+    function addLines(type, str, prefix) {
       while (lines.length > maxLines) {
         const div = lines.shift();
         div.parentNode.removeChild(div);
       }
-      addLine(type, str, color, prefix);
+      addLine(type, str, prefix);
     }
 
-    function wrapFunc(obj, funcName, color, prefix) {
+    function wrapFunc(obj, funcName, prefix) {
       const oldFn = obj[funcName];
       origConsole[funcName] = oldFn.bind(obj);
       return function(...args) {
-        addLines(funcName, [...args].join(' '), color, prefix);
+        addLines(funcName, [...args].join(' '), prefix);
         oldFn.apply(obj, arguments);
       };
     }
 
-    window.console.log = wrapFunc(window.console, 'log', 'black', '');
-    window.console.warn = wrapFunc(window.console, 'warn', 'black', '⚠');
-    window.console.error = wrapFunc(window.console, 'error', 'red', '❌');
+    window.console.log = wrapFunc(window.console, 'log', '');
+    window.console.warn = wrapFunc(window.console, 'warn', '⚠');
+    window.console.error = wrapFunc(window.console, 'error', '❌');
   }
 
   function reportJSError(url, lineNo, colNo, msg) {
@@ -326,7 +336,7 @@
         super(url);
         let listener;
         this.onmessage = function(e) {
-          if (!e || !e.data || !e.data.type === '___editor___') {
+          if (!e || !e.data || e.data.type !== '___editor___') {
             if (listener) {
               listener(e);
             }
@@ -380,16 +390,17 @@
     const options = opt_options || {};
 
     if (canvas) {
-      canvas.addEventListener('webglcontextlost', function(e) {
+      canvas.addEventListener('webglcontextlost', function() {
           // the default is to do nothing. Preventing the default
           // means allowing context to be restored
-          e.preventDefault();
           addContextLostHTML();
       });
+      /* because of bug in firefox we can't auto restore
       canvas.addEventListener('webglcontextrestored', function() {
           // just reload the page. Easiest.
           window.location.reload();
       });
+      */
     }
 
     if (isInIFrame()) {
@@ -405,76 +416,81 @@
     }
   };
 
-  /**
-   * Get's the iframe in the parent document
-   * that is displaying the specified window .
-   * @param {Window} window window to check.
-   * @return {HTMLIFrameElement?) the iframe element if window is in an iframe
-   */
-  function getIFrameForWindow(window) {
-    if (!isInIFrame(window)) {
-      return;
-    }
-    const iframes = window.parent.document.getElementsByTagName('iframe');
-    for (let ii = 0; ii < iframes.length; ++ii) {
-      const iframe = iframes[ii];
-      if (iframe.contentDocument === window.document) {
-        return iframe;  // eslint-disable-line
-      }
-    }
-  }
-
-  /**
-   * Returns true if window is on screen. The main window is
-   * always on screen windows in iframes might not be.
-   * @param {Window} window the window to check.
-   * @return {boolean} true if window is on screen.
-   */
-  function isFrameVisible(window) {
-    try {
-      const iframe = getIFrameForWindow(window);
-      if (!iframe) {
-        return true;
-      }
-
-      const bounds = iframe.getBoundingClientRect();
-      const isVisible = bounds.top < window.parent.innerHeight && bounds.bottom >= 0 &&
-                        bounds.left < window.parent.innerWidth && bounds.right >= 0;
-
-      return isVisible && isFrameVisible(window.parent);
-    } catch (e) {
-      return true;  // We got a security error?
-    }
-  }
-
-  /**
-   * Returns true if element is on screen.
-   * @param {HTMLElement} element the element to check.
-   * @return {boolean} true if element is on screen.
-   */
-  function isOnScreen(element) {
-    let isVisible = true;
-
-    if (element) {
-      const bounds = element.getBoundingClientRect();
-      isVisible = bounds.top < topWindow.innerHeight && bounds.bottom >= 0;
-    }
-
-    return isVisible && isFrameVisible(topWindow);
-  }
-
-  // Replace requestAnimationFrame.
+  // Replace requestAnimationFrame and cancelAnimationFrame with one
+  // that only executes when the body is visible (we're in an iframe).
+  // It's frustrating that th browsers don't do this automatically.
+  // It's half of the point of rAF that it shouldn't execute when
+  // content is not visible but browsers execute rAF in iframes even
+  // if they are not visible.
   if (topWindow.requestAnimationFrame) {
-    topWindow.requestAnimationFrame = (function(oldRAF) {
+    topWindow.requestAnimationFrame = (function(oldRAF, oldCancelRAF) {
+      let nextFakeRAFId = 1;
+      const fakeRAFIdToCallbackMap = new Map();
+      let rafRequestId;
+      let isBodyOnScreen;
 
-      return function(callback, element) {
-        const handler = function() {
-          return oldRAF(isOnScreen(element) ? callback : handler, element);
-        };
-        return handler();
+      function rAFHandler(time) {
+        rafRequestId = undefined;
+        const ids = [...fakeRAFIdToCallbackMap.keys()];  // WTF! Map.keys() iterates over live keys!
+        for (const id of ids) {
+          const callback = fakeRAFIdToCallbackMap.get(id);
+          fakeRAFIdToCallbackMap.delete(id);
+          if (callback) {
+            callback(time);
+          }
+        }
+      }
+
+      function startRAFIfIntersectingAndNeeded() {
+        if (!rafRequestId && isBodyOnScreen && fakeRAFIdToCallbackMap.size > 0) {
+          rafRequestId = oldRAF(rAFHandler);
+        }
+      }
+
+      function stopRAF() {
+        if (rafRequestId) {
+          oldCancelRAF(rafRequestId);
+          rafRequestId = undefined;
+        }
+      }
+
+      function initIntersectionObserver() {
+        const intersectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            isBodyOnScreen = entry.isIntersecting;
+          });
+          if (isBodyOnScreen) {
+            startRAFIfIntersectingAndNeeded();
+          } else {
+            stopRAF();
+          }
+        });
+        intersectionObserver.observe(document.body);
+      }
+
+      function betterRAF(callback) {
+        const fakeRAFId = nextFakeRAFId++;
+        fakeRAFIdToCallbackMap.set(fakeRAFId, callback);
+        startRAFIfIntersectingAndNeeded();
+        return fakeRAFId;
+      }
+
+      function betterCancelRAF(id) {
+        fakeRAFIdToCallbackMap.delete(id);
+      }
+
+      topWindow.cancelAnimationFrame = betterCancelRAF;
+
+      return function(callback) {
+        // we need to lazy init this because this code gets parsed
+        // before body exists. We could fix it by moving lesson-helper.js
+        // after <body> but that would require changing 100s of examples
+        initIntersectionObserver();
+        topWindow.requestAnimationFrame = betterRAF;
+        return betterRAF(callback);
       };
 
-    }(topWindow.requestAnimationFrame));
+    }(topWindow.requestAnimationFrame, topWindow.cancelAnimationFrame));
   }
 
   updateCSSIfInIFrame();
@@ -537,7 +553,7 @@
         }, args[1]);
         const ctx = oldFn.apply(this, args);
         if (!ctx && isWebGL) {
-          showNeedWebGL(this);
+          showNeedWebGL(this, type);
         }
         return ctx;
       };

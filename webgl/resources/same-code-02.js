@@ -48,7 +48,7 @@ uniform float u_specularFactor;
 
 vec4 lit(float l ,float h, float m) {
   return vec4(1.0,
-              pow(max(0.0, l), 2.5),
+              pow(abs(l), 2.5),
               (l > 0.0) ? pow(max(0.0, h), m) : 0.0,
               1.0);
 }
@@ -78,7 +78,7 @@ function main() {
   // we have a canvas on the page. Or else we have container and we
   // insert a canvas inside that container.
   // If we don't find a container we use the body of the document.
-  var container = document.getElementById("canvas") || document.body;
+  var container = document.querySelector("#canvas") || document.body;
   var isCanvas = (container instanceof HTMLCanvasElement);
   var canvas = isCanvas ? container : document.createElement("canvas");
   if (!isCanvas) {

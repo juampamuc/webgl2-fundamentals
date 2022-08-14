@@ -1,22 +1,24 @@
 <!DOCTYPE html>
-<!-- this file is auto-generated from webgl/lessons/ko/langinfo.hanson. Do not edited directly -->
+<!-- this file is auto-generated from webgl/lessons/ko/webgl-text-texture.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021, GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
 met:
 
-    * Redistributions of source code must retain the above copyright
-notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above
-copyright notice, this list of conditions and the following disclaimer
-in the documentation and/or other materials provided with the
-distribution.
-    * Neither the name of Gregg Tavares. nor the names of his
-contributors may be used to endorse or promote products derived from
-this software without specific prior written permission.
+*   Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+
+*   Redistributions in binary form must reproduce the above
+    copyright notice, this list of conditions and the following disclaimer
+    in the documentation and/or other materials provided with the
+    distribution.
+
+*   Neither the name of GFXFundamentals. nor the names of his
+    contributors may be used to endorse or promote products derived from
+    this software without specific prior written permission.
 
 THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
 "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
@@ -34,25 +36,78 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGL Text - Textures" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
-<meta property="og:description" content="Display Text in WebGL using Textures" />
-<meta property="og:url" content="http://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webgl2fundamentals.org" />
-<meta name="twitter:title" content="WebGL Text - Textures" />
-<meta name="twitter:url" content="http://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html" />
-<meta name="twitter:description" content="Display Text in WebGL using Textures" />
-<meta name="twitter:image:src" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
+<meta name="description" content="WebGL에서 텍스처를 사용하여 텍스트 표시">
+<meta name="keywords" content="webgl webgl2 graphics">
+<meta name="thumbnail" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-text-texture_ko.jpg">
+
+<meta property="og:title" content="WebGL2 텍스트 - 텍스처">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-text-texture_ko.jpg">
+<meta property="og:description" content="WebGL에서 텍스처를 사용하여 텍스트 표시">
+<meta property="og:url" content="https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webgl2fundamentals.org">
+<meta name="twitter:title" content="WebGL2 텍스트 - 텍스처">
+<meta name="twitter:url" content="https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html">
+<meta name="twitter:description" content="WebGL에서 텍스처를 사용하여 텍스트 표시">
+<meta name="twitter:image:src" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-text-texture_ko.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgl2fundamentals.org/#website",
+      "url":"https://webgl2fundamentals.org/",
+      "name":"Webgl2Fundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html#primaryimage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-text-texture_ko.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html#webpage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html",
+      "inLanguage":"ko",
+      "name":"WebGL2 텍스트 - 텍스처",
+      "keywords":"webgl webgl2 graphics programming",
+      "isPartOf":{
+        "@id":"https://webgl2fundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgl2fundamentals.org/webgl/lessons/ko/webgl-text-texture.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
 
-<title>WebGL Text - Textures</title>
+<title>WebGL2 텍스트 - 텍스처</title>
 <link href="/webgl/lessons/resources/webgl2fundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/ko/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-text-texture.html">
+  <link rel="alternate" hreflang="de" href="https://webglfundamentals.org/webgl/lessons/de/webgl-text-texture.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-text-texture.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-text-texture.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-text-texture.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-text-texture.html">
+
+
+
+
 </head>
 <body>
 <div class="webgl_navbar">
@@ -60,168 +115,772 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <select class="language">
     <option value="/webgl/lessons/webgl-text-texture.html" >English</a>
     <option value="/webgl/lessons/de/webgl-text-texture.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-text-texture.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-text-texture.html" selected>한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-text-texture.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-text-texture.html" >简体中文</a>
 </select>
 
 
-    <a href="#toc"></a>
+    <a href="#toc">목차</a>
   </div>
 </div>
 <div class="webgl_header">
   <h1><a href="/webgl/lessons/ko/">WebGL2Fundamentals.org</a></h1>
+<style>
+#forkongithub>div {
+    background: #000;
+    color: #fff;
+    font-family: arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    pointer-events: auto;
+}
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
+    background: #c11;
+    color: #fff;
+}
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+}
+#forkongithub>div::after {
+    bottom: 1px;
+    top: auto;
+}
+
+#forkongithub{
+    z-index: 9999;
+    /* needed for firefox */
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+#forkongithub svg{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    #forkongithub>div {
+        line-height: 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+  #forkongithub {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+    #forkongithub>div {
+        font-size: 0.7rem;
+        transform: translateX(150px) rotate(45deg) translate(20px,40px);
+    }
+}
+
+</style>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
+        <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
+    </g>
+</svg>
+</a></div></div></div>
+
 </div>
 
 
 <div class="container">
   <div class="lesson-title">
-    <h1>WebGL Text - Textures</h1>
+    <h1>WebGL2 텍스트 - 텍스처</h1>
   </div>
   <div class="lesson">
     <div class="lesson-main">
-      <p>죄송합니다. 이 문서는 아직 자원 봉사자들이 한국어로 번역하지 않았습니다. <a href="https://github.com/greggman/webgl-fundamentals">번역을 도와주세요!</a>! 😄</p>
-<p><a href="/webgl/lessons/webgl-text-texture.html">원본보기</a>.</p>
+      <p>이 포스트는 WebGL에 관한 많은 글에서 이어집니다.
+마지막은 <a href="webgl-text-canvas2d.html">WebGL Canvas 위에 Canvas 2D를 사용한 텍스트 렌더링</a>에 대한 것이었는데요.
+아직 읽지 않았다면 계속하기 전에 확인해보는 게 좋습니다.</p>
+<p>지난 글에서 <a href="webgl-text-canvas2d.html">WebGL Scene 위에 텍스트를 그리기 위한 2D Canvas 사용법</a>을 살펴봤습니다.
+해당 기술은 잘 작동하고 사용하기 쉽지만 텍스트가 다른 3D 객체에 가려질 수 없다는 한계가 있습니다.
+이를 위해서는 실제로 WebGL에서 텍스트를 그려야 합니다.</p>
+<p>가장 간단한 방법은 그 안에 텍스트가 포함된 텍스처를 만드는 겁니다.
+예를 들어 포토샵이나 기타 페인트 프로그램에 들어가 텍스트로 채워진 이미지를 그릴 수 있습니다.</p>
+<p><img class="webgl_center" src="../resources/my-awesme-text.png" /></p>
+<p>그런 다음 plane geometry를 만들고 표시하는데요.
+이게 실제로 제가 작업했던 일부 게임들이 텍스트를 표시하는 방식입니다.
+예를 들어 Locoroco는 약 270개의 문자열만 있었습니다.
+이는 17개의 언어로 현지화되었는데요.
+모든 언어가 포함된 엑셀 시트와 포토샵을 실행하고 각 언어의 메세지를 하나 하나 텍스처로 생성하는 스크립트로 이를 수행했습니다.</p>
+<p>물론 런타임에 텍스처를 생성할 수도 있는데요.
+WebGL은 브라우저에서 실행되기 때문에 Canvas 2D API를 활용하여 텍스처를 생성할 수 있습니다.</p>
+<p><a href="webgl-text-canvas2d.html">이전 글</a>의 예제를 가져와 2D Canvas를 텍스트로 채우는 함수를 추가해봅시다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var textCtx = document.createElement(&quot;canvas&quot;).getContext(&quot;2d&quot;);
+
+// 캔버스 중앙에 텍스트 만들기
+function makeTextCanvas(text, width, height) {
+  textCtx.canvas.width  = width;
+  textCtx.canvas.height = height;
+  textCtx.font = &quot;20px monospace&quot;;
+  textCtx.textAlign = &quot;center&quot;;
+  textCtx.textBaseline = &quot;middle&quot;;
+  textCtx.fillStyle = &quot;black&quot;;
+  textCtx.clearRect(0, 0, textCtx.canvas.width, textCtx.canvas.height);
+  textCtx.fillText(text, width / 2, height / 2);
+  return textCtx.canvas;
+}
+</code></pre><p>이제 WebGL에서 &#39;F&#39;와 텍스트, 두 가지를 그려야 하는데, <a href="webgl-drawing-multiple-things.html">이전 글</a>에서 설명한 몇 가지 도우미 함수를 사용하도록 전환하겠습니다.
+<code class="notranslate" translate="no">programInfo</code>, <code class="notranslate" translate="no">bufferInfo</code> 등이 무엇인지 모르겠다면 해당 글을 봐주세요.</p>
+<p>그럼 &#39;F&#39;와 단위 사각형을 만들어봅시다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Create data for &#39;F&#39;
+var fBufferInfo = primitives.create3DFBufferInfo(gl);
+var fVAO = webglUtils.createVAOFromBufferInfo(
+    gl, fProgramInfo, fBufferInfo);
+
+// Create a unit quad for the &#39;text&#39;
+var textBufferInfo = primitives.createXYQuadBufferInfo(gl, 1);
+var textVAO = webglUtils.createVAOFromBufferInfo(
+    gl, textProgramInfo, textBufferInfo);
+</code></pre><p>The XY quad is a quad (square) that&#39;s 1 unit big. This one is centered at the origin. Being 1 unit
+it&#39;s extents are -0.5, -0.5 and 0.5, 0.5</p>
+<p>다음으로 2개의 shader를 생성합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// GLSL program 설정
+var fProgramInfo = webglUtils.createProgramInfo(
+    gl, [fVertexShaderSource, fFragmentShaderSource]);
+var textProgramInfo = webglUtils.createProgramInfo(
+    gl, [textVertexShaderSource, textFragmentShaderSource]);
+</code></pre><p>그리고 텍스트 텍스처를 생성합니다.
+We generate mips since the text will get small.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 텍스트 텍스처 생성
+var textCanvas = makeTextCanvas(&quot;Hello!&quot;, 100, 26);
+var textWidth  = textCanvas.width;
+var textHeight = textCanvas.height;
+var textTex = gl.createTexture();
+gl.bindTexture(gl.TEXTURE_2D, textTex);
+gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
+gl.generateMipmap(gl.TEXTURE_2D);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+</code></pre><p>&#39;F&#39;와 텍스트의 uniform을 설정합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var fUniforms = {
+  u_matrix: m4.identity(),
+};
+
+var textUniforms = {
+  u_matrix: m4.identity(),
+  u_texture: textTex,
+};
+</code></pre><p>Now when we compute the matrices for the F we start with the viewMatrix instead
+of the viewProjectionMatrix like other samples. We multiply that by the parts
+that make up our F&#39;s orientation</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var fViewMatrix = m4.translate(viewMatrix,
+    translation[0] + xx * spread, translation[1] + yy * spread, translation[2]);
+fViewMatrix = m4.xRotate(fViewMatrix, rotation[0]);
+fViewMatrix = m4.yRotate(fViewMatrix, rotation[1] + yy * xx * 0.2);
+fViewMatrix = m4.zRotate(fViewMatrix, rotation[2] + now + (yy * 3 + xx) * 0.1);
+fViewMatrix = m4.scale(fViewMatrix, scale[0], scale[1], scale[2]);
+fViewMatrix = m4.translate(fViewMatrix, -50, -75, 0);
+</code></pre><p>Then finally we we multiply in the projectionMatrix when setting our uniform value.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">fUniforms.u_matrix = m4.multiply(projectionMatrix, fViewMatrix);
+</code></pre><p>It&#39;s important to note here that <code class="notranslate" translate="no">projectionMatrix</code> is on the left. This lets us
+multiply in the projectionMatrix as though it was the first matrix. Normally
+we multiply on the right.</p>
+<p>F를 그리면 이렇게 나옵니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// &#39;F&#39;를 그리도록 설정
+gl.useProgram(fProgramInfo.program);
+
+// setup the attributes and buffers for the F
+gl.bindVertexArray(fVAO);
+
+fUniforms.u_matrix = m4.multiply(projectionMatrix, fViewMatrix);
+
+webglUtils.setUniforms(fProgramInfo, fUniforms);
+
+webglUtils.drawBufferInfo(gl, fBufferInfo);
+</code></pre><p>For the text we start with the projectionMatrix and then get only the position
+from the fViewMatrix we saved before. This will get us a space in front the view.
+We also need to scale our unit quad to match the dimensions of the texture.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 텍스트에 &#39;F&#39;의 view position만 사용
+var textMatrix = m4.translate(projectionMatrix,
+    fViewMatrix[12], fViewMatrix[13], fViewMatrix[14]);
+// F를 필요한 크기로 조정
+textMatrix = m4.scale(textMatrix, textWidth, textHeight, 1);
+</code></pre><p>그런 다음 텍스트를 렌더링합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 텍스트를 그리도록 설정
+gl.useProgram(textProgramInfo.program);
+
+gl.bindVertexArray(textVAO);
+
+m4.copy(textMatrix, textUniforms.u_matrix);
+webglUtils.setUniforms(textProgramInfo, textUniforms);
+
+// 텍스트 그리기
+webglUtils.drawBufferInfo(gl, textBufferInfo);
+</code></pre><p>그리고 여기 결과입니다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>가끔씩 텍스트의 일부가 F의 일부를 가린다는 걸 눈치채셨을 겁니다.
+그 이유는 사각형을 그리기 때문인데요.
+캔버스의 기본 색상이 투명한 검정색(0,0,0,0)이며 해당 색상을 사각형에 그리고 있습니다.
+이 대신에 픽셀을 섞을 수 있습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.enable(gl.BLEND);
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+</code></pre><p>이는 source pixel(fragment shader의 색상)을 가져와 blend 함수를 이용해 dest pixel(캔버스의 색상)과 결합합니다.
+Blend 함수에서 source는 <code class="notranslate" translate="no">SRC_ALPHA</code>로, dest는 <code class="notranslate" translate="no">ONE_MINUS_SRC_ALPHA</code>로 설정했습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">result = dest * (1 - src_alpha) + src * src_alpha
+</code></pre><p>다음은 dest가 녹색(<code class="notranslate" translate="no">0,1,0,1</code>)이고 source가 빨간색(<code class="notranslate" translate="no">1,0,0,1</code>)인 예시입니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">src = [1, 0, 0, 1]
+dst = [0, 1, 0, 1]
+src_alpha = src[3]
+
+result = dst * (1 - src_alpha) + src * src_alpha
+result = dst * 0 + src * 1
+result = src
+</code></pre><p>다음은 투명한 검정색(<code class="notranslate" translate="no">0,0,0,0</code>)인 텍스처 부분입니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">src = [0, 0, 0, 0]
+dst = [0, 1, 0, 1]
+src_alpha = src[3]
+
+result = dst * (1 - src_alpha) + src * src_alpha
+result = dst * 1 + src * 0
+result = dst
+</code></pre><p>여기 블렌딩을 활성화한 결과입니다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-enable-blend.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-enable-blend.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>이게 더 낫지만 아직 완벽하진 않습니다.
+가까이서 보면 가끔씩 이런 문제를 볼 수 있는데요.</p>
+<p><img class="webgl_center" src="../resources/text-zbuffer-issue.png" /></p>
+<p>무슨 일이 일어난 걸까요?
+현재 F를 그린 다음 텍스트를 그리고, 다음 F와 텍스트 그리기를 반복하고 있는데요.
+<a href="webgl-3d-orthographic.html">Depth buffer</a>가 있기 때문에, F의 텍스트를 그릴 때 블렌딩으로 일부 픽셀이 배경색을 유지하더라도, depth buffer는 여전히 갱신됩니다.
+다음 F를 그릴 때 F의 일부가 이전에 그려진 텍스트의 픽셀 뒤에 있다면 그려지지 않을 겁니다.</p>
+<p>GPU에서 3D 렌더링할 때 겪는 가장 어려운 문제 중 하나에 직면했습니다.
+<strong>바로 투명도 문제입니다.</strong></p>
+<p>대부분의 투명도 렌더링 문제에 가장 일반적인 해결책은 모든 불투명체를 먼저 그리고, depth buffer testing은 켜고 depth buffer updating은 끈 상태에서, z거리로 정렬된 투명한 물체를 모두 그리는 겁니다.</p>
+<p>먼저 불투명한 것(F)과 투명한 것(텍스트)을 분리해봅시다.
+우선 텍스트 위치를 저장할 배열을 선언할 겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var textPositions = [];
+</code></pre><p>그리고 F의 렌더링 루프에서 이 위치들을 저장할 겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// remember the position for the text
+textPositions.push([fViewMatrix[12], fViewMatrix[13], fViewMatrix[14]]);
+</code></pre><p>&#39;F&#39;를 그리기 전에 블렌딩을 비활성화하고 depth buffer 작성을 켜겠습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.disable(gl.BLEND);
+gl.depthMask(true);
+</code></pre><p>텍스트 그리기의 경우 블렌딩을 활성화하고 depth buffer 작성을 끌겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.enable(gl.BLEND);
+gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+gl.depthMask(false);
+</code></pre><p>그런 다음 저장해둔 모든 위치에 텍스트를 그립니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">textPositions.forEach(function(pos) {
+  // use just the view position of the &#39;F&#39; for the text
+  var textMatrix = m4.translate(projectionMatrix,
+      pos[0], pos[1], pos[2]);
+  // scale the F to the size we need it.
+  textMatrix = m4.scale(textMatrix, textWidth, textHeight, 1);
+
+  // setup to draw the text.
+  gl.useProgram(textProgramInfo.program);
+
+  gl.bindVertexArray(textVAO);
+
+  m4.copy(textMatrix, textUniforms.u_matrix);
+  webglUtils.setUniforms(textProgramInfo, textUniforms);
+
+  // 텍스트 그리기
+  webglUtils.drawBufferInfo(gl, textBufferInfo);
+});
+</code></pre><p>그리고 이제 대부분 작동합니다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-separate-opaque-from-transparent.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-separate-opaque-from-transparent.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>참고로 위에서 언급한 것처럼 정렬하지 않았는데요.
+이 경우에는 대부분 불투명 텍스트를 그리기 때문에 아마 정렬해도 눈에 띄는 차이는 없을 것이므로 다른 글을 위해 남겨두겠습니다.</p>
+<p>또 다른 문제는 텍스트가 &#39;F&#39;와 교차한다는 겁니다.
+만약 MMO를 만들고 있고 각 플레이어의 텍스트가 항상 나타나도록 하고 싶다면 머리 위에 있도록 할 수 있는데요.
+항상 플레이어 위에 있기에 충분한 단위의 수만큼 +Y로 이동시킵니다.</p>
+<p>카메라 앞쪽으로 이동시킬 수도 있는데요.
+그냥 여기에서 해봅시다.
+&#39;pos&#39;는 view space에 있기 때문에 눈(view space의 0,0,0)에 상대적입니다.
+따라서 정규화하면 눈에서 해당 지점을 가리키는 단위 벡터를 얻은 다음, 텍스트를 눈에서 멀어지거나 가까워지도록 특정 단위의 수만큼 이동하기 위해 일정량을 곱할 수 있습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">+// pos가 view space에 있기 때문에 눈에서 특정 위치까지의 벡터를 의미합니다.
++// 따라서 벡터를 따라 눈을 향해 약간의 거리를 다시 이동합니다.
++var fromEye = m4.normalize(pos);
++var amountToMoveTowardEye = 150;  // F는 150단위의 길이
++var viewX = pos[0] - fromEye[0] * amountToMoveTowardEye;
++var viewY = pos[1] - fromEye[1] * amountToMoveTowardEye;
++var viewZ = pos[2] - fromEye[2] * amountToMoveTowardEye;
+
+var textMatrix = m4.translate(projectionMatrix,
+*    viewX, viewY, viewZ);
+// scale the F to the size we need it.
+textMatrix = m4.scale(textMatrix, textWidth, textHeight, 1);
+// because pos is in view space that means it&#39;s a vector from the eye to
+// some position. So translate along that vector back toward the eye some distance
+</code></pre><p>여기 그 결과입니다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-moved-toward-view.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-moved-toward-view.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>아직 글자의 가장자리에 문제가 있음을 알 수 있는데요.</p>
+<p><img class="webgl_center" src="../resources/text-gray-outline.png" /></p>
+<p>여기서 문제는 Canvas 2D API가 미리 곱한 알파 값만 나타낸다는 겁니다.
+캔버스의 컨텐츠를 텍스처에 업로드할 때 WebGL은 값을 미리 곱하지 않으려고 하지만 미리 곱한 알파는 손실되었기 때문에 이를 완벽히 수행할 수 없습니다.</p>
+<p>이를 고치기 위해 미리 곱하지 말라고 WebGL에 지시해봅시다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+</code></pre><p>이는 미리 곱한 알파 값을 <code class="notranslate" translate="no">gl.texImage2D</code>와 <code class="notranslate" translate="no">gl.texSubImage2D</code>에 제공하라고 WebGL에 지시합니다.
+<code class="notranslate" translate="no">gl.texImage2D</code>에 전달된 데이터가 이미 Canvas 2D 데이터처럼 미리 곱해졌다면 WebGL은 그냥 전달만 합니다.</p>
+<p>또한 블렌딩 함수를 수정해야 합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">-gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
++gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+</code></pre><p>이전에는 src color에 알파를 곱했습니다.
+이게 <code class="notranslate" translate="no">SRC_ALPHA</code>가 의미하는 것입니다.
+하지만 이제 텍스처의 데이터에 이미 알파가 곱해졌는데요.
+이것이 사전 곱셈이 의미하는 바입니다.
+따라서 곱셈에 GPU가 필요하지 않습니다.
+그러니 1로 곱함을 의미하는 <code class="notranslate" translate="no">ONE</code>으로 설정합시다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-premultiplied-alpha.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-premultiplied-alpha.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>이제 가장자리가 없어졌습니다.</p>
+<p>텍스트를 고정된 크기로 유지하면서 올바르게 정렬하려면 어떻게 해야 할까요?
+<a href="webgl-3d-perspective.html">Perspective</a>를 떠올려보면 perspective matrix는 거리에 따라 점점 작아지도록 만들기 위해 <code class="notranslate" translate="no">-Z</code>로 객체의 크기를 조정합니다.
+따라서 원하는 크기의 <code class="notranslate" translate="no">-Z</code>배로 크기를 조정하여 보정할 수 있습니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
+// pos가 view space에 있기 때문에 눈에서 특정 위치까지의 벡터를 의미합니다.
+// 따라서 벡터를 따라 눈을 향해 약간의 거리를 다시 이동합니다.
+var fromEye = normalize(pos);
+var amountToMoveTowardEye = 150;  // F는 150단위의 길이
+var viewX = pos[0] - fromEye[0] * amountToMoveTowardEye;
+var viewY = pos[1] - fromEye[1] * amountToMoveTowardEye;
+var viewZ = pos[2] - fromEye[2] * amountToMoveTowardEye;
++var desiredTextScale = -1 / gl.canvas.height;  // 1x1 픽셀
++var scale = viewZ * desiredTextScale;
+
+var textMatrix = m4.translate(projectionMatrix, viewX, viewY, viewZ);
+// 필요한 크기로 F의 크기를 조정
+textMatrix = m4.scale(textMatrix, textWidth * scale, textHeight * scale, 1);
+...
+</code></pre><p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-consistent-scale.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-consistent-scale.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>각 F에 다른 텍스트를 그리고 싶다면 F마다 새로운 텍스처를 만들고 F의 text uniform을 갱신해야 합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 각 F마다 하나씩, 텍스트 텍스처 생성
+var textTextures = [
+  &quot;anna&quot;,   // 0
+  &quot;colin&quot;,  // 1
+  &quot;james&quot;,  // 2
+  &quot;danny&quot;,  // 3
+  &quot;kalin&quot;,  // 4
+  &quot;hiro&quot;,   // 5
+  &quot;eddie&quot;,  // 6
+  &quot;shu&quot;,    // 7
+  &quot;brian&quot;,  // 8
+  &quot;tami&quot;,   // 9
+  &quot;rick&quot;,   // 10
+  &quot;gene&quot;,   // 11
+  &quot;natalie&quot;,// 12,
+  &quot;evan&quot;,   // 13,
+  &quot;sakura&quot;, // 14,
+  &quot;kai&quot;,    // 15,
+].map(function(name) {
+  var textCanvas = makeTextCanvas(name, 100, 26);
+  var textWidth  = textCanvas.width;
+  var textHeight = textCanvas.height;
+  var textTex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, textTex);
+  gl.pixelStorei(gl.UNPACK_FLIP_Y_WEBGL, true);
+  gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+  gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, textCanvas);
+  gl.generateMipmap(gl.TEXTURE_2D);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  return {
+    texture: textTex,
+    width: textWidth,
+    height: textHeight,
+  };
+});
+</code></pre><p>그런 다음 렌더링할 때 텍스처를 선택합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*textPositions.forEach(function(pos, ndx) {
+
+  +// 텍스처 선택
+  +var tex = textTextures[ndx];
+</code></pre><p>Use that textures size in our matrix calculations</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  var textMatrix = m4.translate(projectionMatrix, viewX, viewY, viewZ);
+  // 원하는 크기로 F의 크기를 조정
+  *textMatrix = m4.scale(textMatrix, tex.width * scale, tex.height * scale, 1);
+</code></pre><p>그리고 그리기 전에 텍스처에 대한 uniform을 설정합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">  textUniforms.u_texture = tex.texture;
+</code></pre><p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-different-text.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-different-text.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>텍스트를 캔버스에 그리기 위해 검은색을 사용했는데요.
+흰색으로 텍스트를 렌더링한다면 더 유용할 겁니다.
+그러면 텍스트에 색상을 곱하여 원하는 색상으로 만들 수 있습니다.</p>
+<p>먼저 색상으로 곱하기 위해 text shader를 변경할 겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">...
+in vec2 v_texcoord;
+
+uniform sampler2D u_texture;
++uniform vec4 u_color;
+
+out vec4 outColor;
+
+void main() {
+*   outColor = texture2D(u_texture, v_texcoord) * u_color;
+}
+</code></pre><p>그리고 캔버스에 텍스트를 그릴 때 흰색을 사용합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">textCtx.fillStyle = &quot;white&quot;;
+</code></pre><p>그런 다음 몇 가지 색상을 만들 겁니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 각 F마다 하나의 색상
+var colors = [
+  [0.0, 0.0, 0.0, 1], // 0
+  [1.0, 0.0, 0.0, 1], // 1
+  [0.0, 1.0, 0.0, 1], // 2
+  [1.0, 1.0, 0.0, 1], // 3
+  [0.0, 0.0, 1.0, 1], // 4
+  [1.0, 0.0, 1.0, 1], // 5
+  [0.0, 1.0, 1.0, 1], // 6
+  [0.5, 0.5, 0.5, 1], // 7
+  [0.5, 0.0, 0.0, 1], // 8
+  [0.0, 0.0, 0.0, 1], // 9
+  [0.5, 5.0, 0.0, 1], // 10
+  [0.0, 5.0, 0.0, 1], // 11
+  [0.5, 0.0, 5.0, 1], // 12,
+  [0.0, 0.0, 5.0, 1], // 13,
+  [0.5, 5.0, 5.0, 1], // 14,
+  [0.0, 5.0, 5.0, 1], // 15,
+];
+</code></pre><p>그릴 때 색상을 선택합니다.</p>
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// uniform 색상 설정
+textUniforms.u_color = colors[ndx];
+</code></pre><p>다음은 여러 색상을 적용한 예제입니다.</p>
+<p><div class="webgl_example_container">
+  <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-text-texture-different-colors.html"></iframe>
+  <a class="webgl_center" href="/webgl/lessons/../webgl-text-texture-different-colors.html" target="_blank">새 창으로 열기</a>
+</div>
+
+</p>
+<p>이 기술은 실제로 대부분의 브라우저가 GPU 가속 시 사용하는 기술입니다.
+HTML 컨텐츠와 적용한 다양한 스타일로 텍스처를 생성하고, 해당 컨텐츠가 변경되지 않는 한, 스크롤할 때 텍스처를 다시 렌더링할 수 있습니다.
+물론 매번 갱신한다면 텍스처를 다시 생성하고 다시 GPU에 업로드하는 작업이 상대적으로 느리기 때문에 약간 느려질 수도 있습니다.</p>
+<p><a href="webgl-text-glyphs.html">다음 글</a>에서는 자주 갱신되는 경우에 더 좋은 기술을 살펴보겠습니다.</p>
+<div class="webgl_bottombar">
+<h3>픽셀화 없이 텍스트 크기 조정</h3>
+<p>
+예제에서 일괄된 크기를 사용하기 전에 카메라에 가까워 짐에 따라 텍스트가 픽셀화되는 것을 알 수 있습니다.
+어떻게 고칠 수 있을까요?
+</p>
+<p>
+사실 3D에서 2D 텍스트의 크기를 조정하는 것은 그리 일반적이지 않습니다.
+대부분의 게임이나 3D 에디터를 보면 카메라가 멀리 있는지 가까이 있는지 상관없이 텍스트는 거의 항상 일괄된 크기임을 알 수 있는데요.
+실제로 종종 텍스트는 3D 대신 2D로 그려질 수 있으므로, 누군가 혹은 무언가가 벽 뒤에 있는 팀원처럼 뒤에 있더라도, 텍스트를 읽을 수 있습니다.
+</p>
+<p>
+3D에서 2D 텍스트의 크기를 조정하고 싶을 때 쉬운 선택지는 없습니다.
+당장 생각나는 게 몇 가지 있는데요.
+</p>
+<ul>
+<li>
+다양한 해상도의 글꼴로 다양한 크기의 텍스처를 만듭니다.
+그런 다음 텍스트가 더 커질수록 더 높은 해상도의 텍스처를 사용하는데요.
+이를 LODing(다양한 Levels of Detail 사용)이라고 합니다.
+</li>
+<li>
+다른 방법은 매 프레임마다 정확한 텍스트 크기로 텍스처를 렌더링하는 겁니다.
+이 방법은 굉장히 느릴 수 있습니다.
+</li>
+<li>
+또 다른 방법으로 geometry에서 2D 텍스트를 만들 수 있습니다
+다시 말해 텍스트를 텍스처에 그리는 대신에 수많은 삼각형으로 텍스트를 만드는 겁니다.
+이는 작동하지만 작은 텍스트가 잘 렌더링되지 않고 큰 텍스트는 삼각형이 보이는 문제가 있습니다.
+</li>
+<li>
+또 하나는 <a href="https://www.google.com/search?q=loop+blinn+curve+rendering">곡선을 렌더링하는 특별한 shader</a>를 사용하는 겁니다.
+이는 굉장히 멋지지만 설명할 수 있는 것은 여기까지입니다.
+</li>
+</div>
+
 
     </div>
     <div class="lesson-sidebar">
         <select class="language">
     <option value="/webgl/lessons/webgl-text-texture.html" >English</a>
     <option value="/webgl/lessons/de/webgl-text-texture.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-text-texture.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-text-texture.html" selected>한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-text-texture.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-text-texture.html" >简体中文</a>
 </select>
 
 
-        <ul>  <li>기초</li>
+        <div id="toc">
+          <ul>  <li>기초</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-getting-webgl2.html">WebGL2 사용하기</a></li>
-<li><a href="/webgl/lessons/ko/webgl-fundamentals.html">WebGL2 기초</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-getting-webgl2.html">WebGL2 사용법</a></li>
+<li><a href="/webgl/lessons/ko/webgl-fundamentals.html">기초</a></li>
 <li><a href="/webgl/lessons/ko/webgl-how-it-works.html">WebGL2 작동 원리</a></li>
-<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL2 쉐이더와 GLSL</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shaders-and-glsl.html">WebGL2 셰이더와 GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL2 State Diagram</a></li>
         </ul>
   <li>WebGL2 vs WebGL1</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl2-whats-new.html">WebGL2 새로운 기능</a></li>
-<li><a href="/webgl/lessons/ko/webgl1-to-webgl2.html">Moving from WebGL1 to WebGL2</a></li>
-<li><a href="/webgl/lessons/ko/webgl1-to-webgl2-fundamentals.html">Differences from WebGLFundamentals.org to WebGL2Fundamentals.org</a></li>
+<li><a href="/webgl/lessons/ko/webgl1-to-webgl2.html">WebGL1에서 WebGL2로의 변경</a></li>
+<li><a href="/webgl/lessons/ko/webgl1-to-webgl2-fundamentals.html">WebGLFundamentals.org과 WebGL2Fundamentals.org의 차이점</a></li>
         </ul>
   <li>이미지 처리</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">WebGL2 이미지 처리</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-image-processing.html">이미지 처리</a></li>
 <li><a href="/webgl/lessons/ko/webgl-image-processing-continued.html">WebGL2 이미지 처리 심화</a></li>
         </ul>
   <li>2D 이동, 회전, 크기 변환 행렬 계산</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-2d-translation.html">WebGL2 2D 이동</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-rotation.html">WebGL2 2D 회전</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL2 2D 크기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-scale.html">WebGL2 2D 크기 변환</a></li>
 <li><a href="/webgl/lessons/ko/webgl-2d-matrices.html">WebGL2 2D 행렬</a></li>
         </ul>
   <li>3D</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-orthographic.html">WebGL2 - Orthographic 3D</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-perspective.html">WebGL2 3D Perspective</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-camera.html">3D - Cameras</a></li>
-<li><a href="/webgl/lessons/ko/webgl-matrix-naming.html">3D - Matrix Naming</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-orthographic.html">3D 직교 투영</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-perspective.html">3D 원근 투영</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-camera.html">3D - 카메라</a></li>
+<li><a href="/webgl/lessons/ko/webgl-matrix-naming.html">3D - 행렬의 이름</a></li>
         </ul>
   <li>Lighting</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-lighting-directional.html">Directional Lighting</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">Point Lighting</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">Spot Lighting</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-lighting-directional.html">방향성 조명 효과(Directional Lighting)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-lighting-point.html">점 조명 효과(Point Lighting)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-lighting-spot.html">스팟 조명 효과(Spot Lighting)</a></li>
         </ul>
   <li>Structure and Organization</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">Less Code, More Fun</a></li>
-<li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">Drawing Multiple Things</a></li>
-<li><a href="/webgl/lessons/ko/webgl-scene-graph.html">Scene Graphs</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-less-code-more-fun.html">더 적은 코드로 즐겁게 코딩하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-drawing-multiple-things.html">여러 물체를 그리는 법</a></li>
+<li><a href="/webgl/lessons/ko/webgl-scene-graph.html">장면(Scene) 그래프</a></li>
         </ul>
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-3d-geometry-lathe.html">3D Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/ko/webgl-load-obj.html">.obj 파일 로딩</a></li>
+<li><a href="/webgl/lessons/ko/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>Textures</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-data-textures.html">Data Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2-textures.html">Using 2 or More Textures</a></li>
-<li><a href="/webgl/lessons/ko/webgl-cors-permission.html">Cross Origin Images</a></li>
-<li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">Perspective Correct Texture Mapping</a></li>
-<li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">Planar and Perspective Projection Mapping</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-3d-textures.html">텍스처</a></li>
+<li><a href="/webgl/lessons/ko/webgl-data-textures.html">데이터 텍스처</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2-textures.html">두개 이상의 텍스처 사용하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cors-permission.html">교차 출처 이미지(Cross Origin Image)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-3d-perspective-correct-texturemapping.html">원근 교정 텍스처 매핑</a></li>
+<li><a href="/webgl/lessons/ko/webgl-planar-projection-mapping.html">평면 및 원근 투영 매핑</a></li>
         </ul>
   <li>Rendering To A Texture</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">Render to Texture</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-render-to-texture.html">텍스처에 렌더링하기</a></li>
         </ul>
   <li>Shadows</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-shadows.html">Shadows</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-shadows.html">그림자</a></li>
         </ul>
   <li>Techniques</li>
         <ul>
             <li>2D</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-2d-drawimage.html">2D - DrawImage</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-matrix-stack.html">2D - 행렬 스택</a></li>
+<li><a href="/webgl/lessons/ko/webgl-sprites.html">Sprite</a></li>
         </ul>
   <li>3D</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-cube-maps.html">Cubemaps</a></li>
-<li><a href="/webgl/lessons/ko/webgl-environment-maps.html">Environment maps</a></li>
-<li><a href="/webgl/lessons/ko/webgl-skybox.html">Skyboxes</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-cube-maps.html">큐브맵</a></li>
+<li><a href="/webgl/lessons/ko/webgl-environment-maps.html">환경맵</a></li>
+<li><a href="/webgl/lessons/ko/webgl-skybox.html">Skybox</a></li>
 <li><a href="/webgl/lessons/ko/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/ko/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/ko/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-text-html.html">Text - HTML</a></li>
-<li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">Text - Canvas 2D</a></li>
-<li><a href="/webgl/lessons/ko/webgl-text-texture.html">Text - Using a Texture</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-text-html.html">텍스트 - HTML</a></li>
+<li><a href="/webgl/lessons/ko/webgl-text-canvas2d.html">텍스트 - Canvas 2D</a></li>
+<li><a href="/webgl/lessons/ko/webgl-text-texture.html">텍스트 - 텍스처 사용</a></li>
 <li><a href="/webgl/lessons/ko/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
+        </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-gpgpu.html">GPGPU</a></li>
         </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/ko/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/ko/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/ko/webgl-pulling-vertices.html">Pulling Vertices</a></li>
         </ul>
-  <li>Misc</li>
+  <li>Optimization</li>
         <ul>
-          <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">Setup And Installation</a></li>
-<li><a href="/webgl/lessons/ko/webgl-boilerplate.html">Boilerplate</a></li>
-<li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
-<li><a href="/webgl/lessons/ko/webgl-animation.html">Animation</a></li>
-<li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+          <li><a href="/webgl/lessons/ko/webgl-indexed-vertices.html">정점 인덱스 (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-instanced-drawing.html">인스턴스 드로잉(Instanced Drawing)</a></li>
+        </ul>
+  <li>기타</li>
+        <ul>
+          <li><a href="/webgl/lessons/ko/webgl-setup-and-installation.html">설정 및 설치</a></li>
+<li><a href="/webgl/lessons/ko/webgl-boilerplate.html">보일러플레이트(Boilerplate)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-resizing-the-canvas.html">Canvas 리사이징</a></li>
+<li><a href="/webgl/lessons/ko/webgl-animation.html">애니메이션</a></li>
+<li><a href="/webgl/lessons/ko/webgl-points-lines-triangles.html">점, 선, 삼각형</a></li>
 <li><a href="/webgl/lessons/ko/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/ko/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
-<li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL2 and Alpha</a></li>
-<li><a href="/webgl/lessons/ko/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
-<li><a href="/webgl/lessons/ko/webgl-anti-patterns.html">Anti-Patterns</a></li>
-<li><a href="/webgl/lessons/ko/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/ko/webgl-and-alpha.html">WebGL2 알파(Alpha)</a></li>
+<li><a href="/webgl/lessons/ko/webgl-2d-vs-3d-library.html">2D vs 3D 라이브러리</a></li>
+<li><a href="/webgl/lessons/ko/webgl-anti-patterns.html">안티패턴</a></li>
+<li><a href="/webgl/lessons/ko/webgl-matrix-vs-math.html">WebGL2 행렬 vs 수학에서의 행렬</a></li>
+<li><a href="/webgl/lessons/ko/webgl-precision-issues.html">정밀도 이슈</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#screenshot">스크린샷 찍기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#preservedrawingbuffer">Canvas Clear 방지</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#tabindex">캔버스에서 키보드 입력 받기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-tips.html#html-background">HTML에서 WebGL2를 배경으로 사용하기</a></li>
+<li><a href="/webgl/lessons/ko/webgl-cross-platform-issues.html">Cross Platform 문제</a></li>
+<li><a href="/webgl/lessons/ko/webgl-qna.html">질문 및 답변</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/ko/webgl-attributes.html">Attributes</a></li>
-<li><a href="/webgl/lessons/ko/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/ko/webgl-texture-units.html">텍스처 유닛</a></li>
+<li><a href="/webgl/lessons/ko/webgl-framebuffers.html">Framebuffer</a></li>
+<li><a href="/webgl/lessons/ko/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/ko/webgl-references.html">참고 자료</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">github</a></li>
 </ul>
+        </div>
+    </div>
+    <div class="lesson-comments">
+        
+    <div>이슈나 버그가 있나요? <a href="https://github.com/greggman/webgl2-fundamentals/issues">깃헙에서 이슈 만들기</a>.</div>
+  
+
+        <div id="disqus_thread"></div>
+        <script>
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'webgl2fundamentals'; // required: replace example with your forum shortname
+            var disqus_identifier = 'WebGL2 텍스트 - 텍스처';
+            var disqus_title = 'WebGL2 텍스트 - 텍스처';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+                    return;
+                }
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "<a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a>님, <br>당신의 <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} 기여</a>에 감사드립니다.",
+  owner: "gfxfundamentals",
+  repo: "webgl2-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -229,7 +888,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
   ga('create', 'UA-90754717-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

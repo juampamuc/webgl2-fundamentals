@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- this file is auto-generated from webgl/lessons/webgl-data-textures.md. Do not edited directly -->
 <!--
-Copyright 2012, Gregg Tavares.
+Copyright 2021, GFXFundamentals.
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -16,7 +16,7 @@ met:
     in the documentation and/or other materials provided with the
     distribution.
 
-*   Neither the name of Gregg Tavares. nor the names of his
+*   Neither the name of GFXFundamentals. nor the names of his
     contributors may be used to endorse or promote products derived from
     this software without specific prior written permission.
 
@@ -36,25 +36,77 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta property="og:title" content="WebGL2 3D - Data Textures" />
-<meta property="og:type" content="website" />
-<meta property="og:image" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
-<meta property="og:description" content="Supplying data to a texture." />
-<meta property="og:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html" />
 
-<meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:site" content="@greggman" />
-<meta name="twitter:creator" content="@greggman" />
-<meta name="twitter:domain" content="webgl2fundamentals.org" />
-<meta name="twitter:title" content="WebGL2 3D - Data Textures" />
-<meta name="twitter:url" content="http://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html" />
-<meta name="twitter:description" content="Supplying data to a texture." />
-<meta name="twitter:image:src" content="http://webgl2fundamentals.org/webgl/lessons/resources/webgl2fundamentals.jpg" />
+<meta name="description" content="Supplying data to a texture.">
+<meta name="keywords" content="webgl webgl2 graphics">
+<meta name="thumbnail" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-data-textures_en.jpg">
+
+<meta property="og:title" content="WebGL2 3D - Data Textures">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-data-textures_en.jpg">
+<meta property="og:description" content="Supplying data to a texture.">
+<meta property="og:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@greggman">
+<meta name="twitter:creator" content="@greggman">
+<meta name="twitter:domain" content="webgl2fundamentals.org">
+<meta name="twitter:title" content="WebGL2 3D - Data Textures">
+<meta name="twitter:url" content="https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html">
+<meta name="twitter:description" content="Supplying data to a texture.">
+<meta name="twitter:image:src" content="https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-data-textures_en.jpg">
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@graph":[
+    {
+      "@type":"WebSite",
+      "@id":"https://webgl2fundamentals.org/#website",
+      "url":"https://webgl2fundamentals.org/",
+      "name":"Webgl2Fundamentals"
+    },
+    {
+      "@type":"ImageObject",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html#primaryimage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/screenshots/webgl-data-textures_en.jpg",
+      "width":1200,
+      "height":630
+    },
+    {
+      "@type":"WebPage",
+      "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html#webpage",
+      "url":"https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html",
+      "inLanguage":"en",
+      "name":"WebGL2 3D - Data Textures",
+      "keywords":"webgl webgl2 graphics programming",
+      "isPartOf":{
+        "@id":"https://webgl2fundamentals.org/#website"
+      },
+      "primaryImageOfPage":{
+        "@id":"https://webgl2fundamentals.org/webgl/lessons/webgl-data-textures.html#primaryimage"
+      }
+    }
+  ]
+}
+</script>
 
 
 <title>WebGL2 3D - Data Textures</title>
 <link href="/webgl/lessons/resources/webgl2fundamentals-icon.png" rel="shortcut icon" type="image/png">
-<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css" type="text/css" />
+<link rel="stylesheet" href="/webgl/lessons/lang.css">
+<link rel="stylesheet" href="/webgl/lessons/resources/lesson.css">
+
+  <link rel="alternate" hreflang="en" href="https://webglfundamentals.org/webgl/lessons/webgl-data-textures.html">
+  <link rel="alternate" hreflang="de" href="https://webglfundamentals.org/webgl/lessons/de/webgl-data-textures.html">
+  <link rel="alternate" hreflang="ja" href="https://webglfundamentals.org/webgl/lessons/ja/webgl-data-textures.html">
+  <link rel="alternate" hreflang="ko" href="https://webglfundamentals.org/webgl/lessons/ko/webgl-data-textures.html">
+  <link rel="alternate" hreflang="pt-br" href="https://webglfundamentals.org/webgl/lessons/pt-br/webgl-data-textures.html">
+  <link rel="alternate" hreflang="zh_cn" href="https://webglfundamentals.org/webgl/lessons/zh_cn/webgl-data-textures.html">
+
+
+
+
 </head>
 <body>
 <div class="webgl_navbar">
@@ -62,6 +114,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
     <select class="language">
     <option value="/webgl/lessons/webgl-data-textures.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-data-textures.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-data-textures.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-data-textures.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-data-textures.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-data-textures.html" >简体中文</a>
@@ -73,6 +126,106 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 </div>
 <div class="webgl_header">
   <h1><a href="/">WebGL2Fundamentals.org</a></h1>
+<style>
+#forkongithub>div {
+    background: #000;
+    color: #fff;
+    font-family: arial,sans-serif;
+    text-align: center;
+    font-weight: bold;
+    padding: 5px 40px;
+    font-size: 0.9rem;
+    line-height: 1.3rem;
+    position: relative;
+    transition: 0.5s;
+    display: block;
+    width: 400px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translateX(200px) rotate(45deg) translate(10px,70px);
+    box-shadow: 4px 4px 10px rgba(0,0,0,0.8);
+    pointer-events: auto;
+}
+#forkongithub a {
+  text-decoration: none;
+  color: #fff;
+}
+#forkongithub>div:hover {
+    background: #c11;
+    color: #fff;
+}
+#forkongithub .contributors {
+  font-size: 0.75rem;
+  background: rgba(255,255,255,0.2);
+  line-height: 1.2;
+  padding: 0.1em;
+}
+#forkongithub>div::before,#forkongithub>div::after {
+    content: "";
+    width: 100%;
+    display: block;
+    position: absolute;
+    top: 1px;
+    left: 0;
+    height: 1px;
+    background: #fff;
+}
+#forkongithub>div::after {
+    bottom: 1px;
+    top: auto;
+}
+
+#forkongithub{
+    z-index: 9999;
+    /* needed for firefox */
+    overflow: hidden;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    pointer-events: none;
+}
+#forkongithub svg{
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+}
+#forkongithub img {
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+  vertical-align: middle;
+}
+
+@media (max-width: 900px) {
+    #forkongithub>div {
+        line-height: 1.2rem;
+    }
+}
+@media (max-width: 700px) {
+  #forkongithub {
+    display: none;
+  }
+}
+@media (max-width: 410px) {
+    #forkongithub>div {
+        font-size: 0.7rem;
+        transform: translateX(150px) rotate(45deg) translate(20px,40px);
+    }
+}
+
+</style>
+<div id="forkongithub"><div><div><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">Fix, Fork, Contribute <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 136 133" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(3.92891,0,0,3.92891,67.867,129.125)">
+        <path d="M0,-31.904C-8.995,-31.904 -16.288,-24.611 -16.288,-15.614C-16.288,-8.417 -11.621,-2.312 -5.148,-0.157C-4.333,-0.008 -4.036,-0.511 -4.036,-0.943C-4.036,-1.329 -4.05,-2.354 -4.058,-3.713C-8.589,-2.729 -9.545,-5.897 -9.545,-5.897C-10.286,-7.779 -11.354,-8.28 -11.354,-8.28C-12.833,-9.29 -11.242,-9.27 -11.242,-9.27C-9.607,-9.155 -8.747,-7.591 -8.747,-7.591C-7.294,-5.102 -4.934,-5.821 -4.006,-6.238C-3.858,-7.29 -3.438,-8.008 -2.972,-8.415C-6.589,-8.826 -10.392,-10.224 -10.392,-16.466C-10.392,-18.244 -9.757,-19.698 -8.715,-20.837C-8.883,-21.249 -9.442,-22.905 -8.556,-25.148C-8.556,-25.148 -7.188,-25.586 -4.076,-23.478C-2.777,-23.84 -1.383,-24.02 0.002,-24.026C1.385,-24.02 2.779,-23.84 4.08,-23.478C7.19,-25.586 8.555,-25.148 8.555,-25.148C9.444,-22.905 8.885,-21.249 8.717,-20.837C9.761,-19.698 10.392,-18.244 10.392,-16.466C10.392,-10.208 6.583,-8.831 2.954,-8.428C3.539,-7.925 4.06,-6.931 4.06,-5.411C4.06,-3.234 4.04,-1.477 4.04,-0.943C4.04,-0.507 4.333,0 5.16,-0.159C11.628,-2.318 16.291,-8.419 16.291,-15.614C16.291,-24.611 8.997,-31.904 0,-31.904" style="fill:white;"/>
+    </g>
+</svg>
+</a></div></div></div>
+
 </div>
 
 
@@ -90,39 +243,9 @@ We created them from images we downloaded. In this article instead of
 using an image we&#39;ll create the data in JavaScript directly.</p>
 <p>Creating data for a texture in JavaScript is mostly straight forward depending
 on the texture format. WebGL2 supports a ton of texture formats though.
-WebGL2 supports all the <em>unsized</em> formats from WebGL1</p>
-<p><style>
-.local-data {
-  font-family: monospace;
-  font-size: medium;
-  text-align: left;
-  display: inline-block;
-  line-height: 1.2;
-}
-.local-data thead {
-  background: lightblue;
-}
-.local-data td {
-  border: 1px solid black;
-  padding: 0.2em;
-}
-.local-data1 td:nth-child(3),
-.local-data1 td:nth-child(4) {
-  text-align: center;
-}
-.local-data2 tbody td:nth-child(8),
-.local-data2 tbody td:nth-child(9) {
-  text-align: center;
-}
-.local-data4 tbody td:nth-child(4) {
-  text-align: center;
-}
-.local-highlight {
-  background: pink;
-}
-</style></p>
+WebGL2 supports all the <em>un-sized</em> formats from WebGL1</p>
 <div class="webgl_center">
-  <table class="local-data local-data1">
+  <table class="tabular-data tabular-data1">
     <thead>
       <tr><td>Format</td><td>Type</td><td>Channels</td><td>Bytes per pixel</td></tr>
     </thead>
@@ -139,10 +262,10 @@ WebGL2 supports all the <em>unsized</em> formats from WebGL1</p>
   </table>
 </div>
 
-<p>They&#39;re called <em>unsized</em> because how they are actually represented internally is undefined in WebGL1.
-It is defined in WebGL2. In addition to those unsized formats there are a slew of sized formats including</p>
+<p>They&#39;re called <em>un-sized</em> because how they are actually represented internally is undefined in WebGL1.
+It is defined in WebGL2. In addition to those un-sized formats there are a slew of sized formats including</p>
 <div class="webgl_center">
-  <table class="local-data local-data2">
+  <table class="tabular-data tabular-data2">
     <thead>
       <tr>
         <td>Sized<br/>Format</td>
@@ -173,14 +296,14 @@ It is defined in WebGL2. In addition to those unsized formats there are a slew o
       <tr><td>RGB10_A2UI     </td><td>RGBA </td><td>ui10 </td><td>ui10 </td><td>ui10</td><td>ui2 </td><td>     </td><td>&#x25cf; </td><td>        </td></tr>
       <tr><td>SRGB8          </td><td>RGB  </td><td>8    </td><td>8    </td><td>8   </td><td>    </td><td>     </td><td>         </td><td>&#x25cf;</td></tr>
       <tr><td>SRGB8_ALPHA8   </td><td>RGBA </td><td>8    </td><td>8    </td><td>8   </td><td>8   </td><td>     </td><td>&#x25cf; </td><td>&#x25cf;</td></tr>
-      <tr><td>R16F           </td><td>RED  </td><td>f16  </td><td>     </td><td>    </td><td>    </td><td>     </td><td class="local-highlight">         </td><td>&#x25cf;</td></tr>
-      <tr><td>RG16F          </td><td>RG   </td><td>f16  </td><td>f16  </td><td>    </td><td>    </td><td>     </td><td class="local-highlight">         </td><td>&#x25cf;</td></tr>
-      <tr><td>RGB16F         </td><td>RGB  </td><td>f16  </td><td>f16  </td><td>f16 </td><td>    </td><td>     </td><td class="local-highlight">         </td><td>&#x25cf;</td></tr>
-      <tr><td>RGBA16F        </td><td>RGBA </td><td>f16  </td><td>f16  </td><td>f16 </td><td>f16 </td><td>     </td><td class="local-highlight">         </td><td>&#x25cf;</td></tr>
-      <tr><td>R32F           </td><td>RED  </td><td>f32  </td><td>     </td><td>    </td><td>    </td><td>     </td><td class="local-highlight">         </td><td class="local-highlight">        </td></tr>
-      <tr><td>RG32F          </td><td>RG   </td><td>f32  </td><td>f32  </td><td>    </td><td>    </td><td>     </td><td class="local-highlight">         </td><td class="local-highlight">        </td></tr>
-      <tr><td>RGB32F         </td><td>RGB  </td><td>f32  </td><td>f32  </td><td>f32 </td><td>    </td><td>     </td><td class="local-highlight">         </td><td class="local-highlight">        </td></tr>
-      <tr><td>RGBA32F        </td><td>RGBA </td><td>f32  </td><td>f32  </td><td>f32 </td><td>f32 </td><td>     </td><td class="local-highlight">         </td><td class="local-highlight">        </td></tr>
+      <tr><td>R16F           </td><td>RED  </td><td>f16  </td><td>     </td><td>    </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td>&#x25cf;</td></tr>
+      <tr><td>RG16F          </td><td>RG   </td><td>f16  </td><td>f16  </td><td>    </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td>&#x25cf;</td></tr>
+      <tr><td>RGB16F         </td><td>RGB  </td><td>f16  </td><td>f16  </td><td>f16 </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td>&#x25cf;</td></tr>
+      <tr><td>RGBA16F        </td><td>RGBA </td><td>f16  </td><td>f16  </td><td>f16 </td><td>f16 </td><td>     </td><td class="tabular-highlight">         </td><td>&#x25cf;</td></tr>
+      <tr><td>R32F           </td><td>RED  </td><td>f32  </td><td>     </td><td>    </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td class="tabular-highlight">        </td></tr>
+      <tr><td>RG32F          </td><td>RG   </td><td>f32  </td><td>f32  </td><td>    </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td class="tabular-highlight">        </td></tr>
+      <tr><td>RGB32F         </td><td>RGB  </td><td>f32  </td><td>f32  </td><td>f32 </td><td>    </td><td>     </td><td class="tabular-highlight">         </td><td class="tabular-highlight">        </td></tr>
+      <tr><td>RGBA32F        </td><td>RGBA </td><td>f32  </td><td>f32  </td><td>f32 </td><td>f32 </td><td>     </td><td class="tabular-highlight">         </td><td class="tabular-highlight">        </td></tr>
       <tr><td>R11F_G11F_B10F </td><td>RGB  </td><td>f11  </td><td>f11  </td><td>f10 </td><td>    </td><td>     </td><td>         </td><td>&#x25cf;</td></tr>
       <tr><td>RGB9_E5        </td><td>RGB  </td><td>9    </td><td>9    </td><td>9   </td><td>    </td><td>5    </td><td>         </td><td>&#x25cf;</td></tr>
       <tr><td>R8I            </td><td>RED  </td><td>i8   </td><td>     </td><td>    </td><td>    </td><td>     </td><td>&#x25cf; </td><td>        </td></tr>
@@ -213,7 +336,7 @@ It is defined in WebGL2. In addition to those unsized formats there are a slew o
 
 <p>And these depth and stencil formats as well</p>
 <div class="webgl_center">
-  <table class="local-data local-data3">
+  <table class="tabular-data tabular-data3">
     <thead>
       <tr>
         <td>Sized<br/>Format</td>
@@ -235,24 +358,24 @@ It is defined in WebGL2. In addition to those unsized formats there are a slew o
 
 <p>Legend:</p>
 <ul>
-<li>a single number like <code>8</code> means 8bits that will be normalized from 0 to 1</li>
-<li>a number preceeded by an <code>s</code> like <code>s8</code> means a signed 8bit number that will be normalized from -1 to 1</li>
-<li>a number preceeded by an <code>f</code> like <code>f16</code> means a floating point number.</li>
-<li>a number preceeded by in <code>i</code> like <code>i8</code> means an integer number.</li>
-<li>a number preceeded by in <code>ui</code> like <code>ui8</code> means an unsigned integer number.</li>
+<li>a single number like <code class="notranslate" translate="no">8</code> means 8bits that will be normalized from 0 to 1</li>
+<li>a number preceded by an <code class="notranslate" translate="no">s</code> like <code class="notranslate" translate="no">s8</code> means a signed 8bit number that will be normalized from -1 to 1</li>
+<li>a number preceded by an <code class="notranslate" translate="no">f</code> like <code class="notranslate" translate="no">f16</code> means a floating point number.</li>
+<li>a number preceded by in <code class="notranslate" translate="no">i</code> like <code class="notranslate" translate="no">i8</code> means an integer number.</li>
+<li>a number preceded by in <code class="notranslate" translate="no">ui</code> like <code class="notranslate" translate="no">ui8</code> means an unsigned integer number.</li>
 </ul>
-<p>We won&#39;t use this info here but I highlighted in <span style="background: pink;">pink</span>
+<p>We won&#39;t use this info here but I <span class="tabular-highlight">highlighted</span>
 the half and float texture formats to show unlike WebGL1 they are always available in WebGL2
 but they are not marked as either color renderable and/or texture filterable by default.
 Not being color renderable means they can not be rendered to. <a href="webgl-render-to-texture.html">Rendering to a texture is
-convered in another lesson</a>. Not texture filterable means they
-must be used with <code>gl.NEAREST</code> only. Both of those features are available as optional
+covered in another lesson</a>. Not texture filterable means they
+must be used with <code class="notranslate" translate="no">gl.NEAREST</code> only. Both of those features are available as optional
 extensions in WebGL2.</p>
 <p>For each of the formats you specify both the <em>internal format</em> (the format the GPU will use internally)
 and the <em>format</em> and <em>type</em> of the data you&#39;re supplying to WebGL. Here is a table showing which format
 and type you must supply data for a given internal format</p>
 <div class="webgl_center">
-  <table class="local-data local-data4">
+  <table class="tabular-data tabular-data4">
     <thead>
       <tr>
         <td>Internal<br/>Format</td>
@@ -329,11 +452,11 @@ and type you must supply data for a given internal format</p>
 </div>
 
 
-<p>Let&#39;s create a 3x2 pixel <code>R8</code> texture. Because it&#39;s an <code>R8</code> texture
+<p>Let&#39;s create a 3x2 pixel <code class="notranslate" translate="no">R8</code> texture. Because it&#39;s an <code class="notranslate" translate="no">R8</code> texture
 there is only 1 value per pixel in the red channel.</p>
 <p>We&#39;ll take the sample from the <a href="webgl-3d-textures.html">last article</a>. First we&#39;ll change
 the texture coordinates to use the entire texture on each face of the cube.</p>
-<pre class="prettyprint"><code>// Fill the buffer with texture coordinates the cube.
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Fill the buffer with texture coordinates the cube.
 function setTexcoords(gl) {
   gl.bufferData(
       gl.ARRAY_BUFFER,
@@ -347,7 +470,7 @@ function setTexcoords(gl) {
         1, 1,
         ...
 </code></pre><p>Then we&#39;ll change the code that creates a texture</p>
-<pre class="prettyprint"><code>// Create a texture.
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// Create a texture.
 var texture = gl.createTexture();
 gl.bindTexture(gl.TEXTURE_2D, texture);
 
@@ -387,10 +510,10 @@ gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
 </p>
 <p>Oops! Why is this not working?!?!?</p>
 <p>Checking the JavaScript console we see this error something like this</p>
-<pre class="prettyprint"><code>WebGL: INVALID_OPERATION: texImage2D: ArrayBufferView not big enough for request
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">WebGL: INVALID_OPERATION: texImage2D: ArrayBufferView not big enough for request
 </code></pre><p>It turns out there&#39;s a kind of obscure setting in WebGL left
-over from when OpenGL was first created. Comptuers sometimes
-go faster then data is a certain size. For example it can
+over from when OpenGL was first created. Computers sometimes
+go faster when data is a certain size. For example it can
 be faster to copy 2, 4, or 8 bytes at a time instead of 1 at a time.
 WebGL defaults to using 4 bytes at a time so it expects each
 row of data to be a multiple of 4 bytes (except for the last row).</p>
@@ -398,7 +521,7 @@ row of data to be a multiple of 4 bytes (except for the last row).</p>
 is going to try to read 4 bytes for the first row and 3 bytes
 for the 2nd row for a total of 7 bytes which is why it&#39;s complaining.</p>
 <p>We can tell WebGL to deal with 1 byte at a time like this</p>
-<pre class="prettyprint"><code>const alignment = 1;
+<pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">const alignment = 1;
 gl.pixelStorei(gl.UNPACK_ALIGNMENT, alignment);
 </code></pre><p>Valid alignment values are 1, 2, 4, and 8.</p>
 <p>I suspect in WebGL you will not be able to measure a difference
@@ -406,7 +529,7 @@ in speed between aligned data and un-aligned data. I wish the default
 was 1 instead of 4 so this issue wouldn&#39;t bite new users but, in order
 to stay compatible with OpenGL the default needed to stay the same.
 That way if a ported app supplies padded rows it will work unchanged.
-At the same time, in a new app you can just always set it to <code>1</code> and
+At the same time, in a new app you can just always set it to <code class="notranslate" translate="no">1</code> and
 then be done with it.</p>
 <p>With that set things should be working</p>
 <p><div class="webgl_example_container">
@@ -422,7 +545,7 @@ then be done with it.</p>
 Texel is short for Texture Element.
 </p>
 <p>I'm sure I'll get an earful from some graphics guru but as far as I can tell "texel" is an example of jargon.
-Personally I generally use "pixel" when refering to the elements of a texture without thinking about it. &#x1f607;
+Personally I generally use "pixel" when referring to the elements of a texture without thinking about it. &#x1f607;
 </p>
 </div>
 
@@ -434,6 +557,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
         <select class="language">
     <option value="/webgl/lessons/webgl-data-textures.html" selected>English</a>
     <option value="/webgl/lessons/de/webgl-data-textures.html" >Deutsch</a>
+    <option value="/webgl/lessons/ja/webgl-data-textures.html" >日本語</a>
     <option value="/webgl/lessons/ko/webgl-data-textures.html" >한국어</a>
     <option value="/webgl/lessons/pt-br/webgl-data-textures.html" >Português Brasileiro</a>
     <option value="/webgl/lessons/zh_cn/webgl-data-textures.html" >简体中文</a>
@@ -447,6 +571,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
 <li><a href="/webgl/lessons/webgl-fundamentals.html">Fundamentals</a></li>
 <li><a href="/webgl/lessons/webgl-how-it-works.html">How It Works</a></li>
 <li><a href="/webgl/lessons/webgl-shaders-and-glsl.html">Shaders and GLSL</a></li>
+<li><a href="/webgl/lessons/resources/webgl-state-diagram.html">WebGL2 State Diagram</a></li>
         </ul>
   <li>WebGL2 vs WebGL1</li>
         <ul>
@@ -469,7 +594,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
   <li>3D</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-orthographic.html">Orthographic 3D</a></li>
-<li><a href="/webgl/lessons/webgl-3d-perspective.html">WebGL2 3D Perspective</a></li>
+<li><a href="/webgl/lessons/webgl-3d-perspective.html">3D Perspective</a></li>
 <li><a href="/webgl/lessons/webgl-3d-camera.html">3D - Cameras</a></li>
 <li><a href="/webgl/lessons/webgl-matrix-naming.html">3D - Matrix Naming</a></li>
         </ul>
@@ -488,6 +613,8 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
   <li>Geometry</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-3d-geometry-lathe.html">3D Geometry - Lathe</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj.html">Loading .obj files</a></li>
+<li><a href="/webgl/lessons/webgl-load-obj-w-mtl.html">Loading .obj w .mtl files</a></li>
         </ul>
   <li>Textures</li>
         <ul>
@@ -512,6 +639,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
         <ul>
           <li><a href="/webgl/lessons/webgl-2d-drawimage.html">2D - DrawImage</a></li>
 <li><a href="/webgl/lessons/webgl-2d-matrix-stack.html">2D - Matrix Stack</a></li>
+<li><a href="/webgl/lessons/webgl-sprites.html">Sprites</a></li>
         </ul>
   <li>3D</li>
         <ul>
@@ -520,6 +648,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
 <li><a href="/webgl/lessons/webgl-skybox.html">Skyboxes</a></li>
 <li><a href="/webgl/lessons/webgl-skinning.html">Skinning</a></li>
 <li><a href="/webgl/lessons/webgl-fog.html">Fog</a></li>
+<li><a href="/webgl/lessons/webgl-picking.html">Picking (clicking on stuff)</a></li>
         </ul>
   <li>Text</li>
         <ul>
@@ -528,12 +657,22 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
 <li><a href="/webgl/lessons/webgl-text-texture.html">Text - Using a Texture</a></li>
 <li><a href="/webgl/lessons/webgl-text-glyphs.html">Text - Using a Glyph Texture</a></li>
         </ul>
+  <li>GPGPU</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-gpgpu.html">GPGPU</a></li>
+        </ul>
         </ul>
   <li>Tips</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-smallest-programs.html">Smallest Programs</a></li>
 <li><a href="/webgl/lessons/webgl-drawing-without-data.html">Drawing Without Data</a></li>
+<li><a href="/webgl/lessons/webgl-shadertoy.html">Shadertoy</a></li>
 <li><a href="/webgl/lessons/webgl-pulling-vertices.html">Pulling Vertices</a></li>
+        </ul>
+  <li>Optimization</li>
+        <ul>
+          <li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
+<li><a href="/webgl/lessons/webgl-instanced-drawing.html">Instanced Drawing</a></li>
         </ul>
   <li>Misc</li>
         <ul>
@@ -542,32 +681,45 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
 <li><a href="/webgl/lessons/webgl-resizing-the-canvas.html">Resizing the Canvas</a></li>
 <li><a href="/webgl/lessons/webgl-animation.html">Animation</a></li>
 <li><a href="/webgl/lessons/webgl-points-lines-triangles.html">Points, Lines, and Triangles</a></li>
-<li><a href="/webgl/lessons/webgl-indexed-vertices.html">Indexed Vertices (gl.drawElements)</a></li>
 <li><a href="/webgl/lessons/webgl-multiple-views.html">Multiple Views, Multiple Canvases</a></li>
 <li><a href="/webgl/lessons/webgl-visualizing-the-camera.html">Visualizing the Camera</a></li>
 <li><a href="/webgl/lessons/webgl-and-alpha.html">WebGL2 and Alpha</a></li>
 <li><a href="/webgl/lessons/webgl-2d-vs-3d-library.html">2D vs 3D libraries</a></li>
 <li><a href="/webgl/lessons/webgl-anti-patterns.html">Anti-Patterns</a></li>
-<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-matrix-vs-math.html">WebGL2 Matrices vs Math Matrices</a></li>
+<li><a href="/webgl/lessons/webgl-precision-issues.html">Precision Issues</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#screenshot">Taking a screenshot</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#preservedrawingbuffer">Prevent the Canvas Being Cleared</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#tabindex">Get Keyboard Input From a Canvas</a></li>
+<li><a href="/webgl/lessons/webgl-tips.html#html-background">Use WebGL2 as Background in HTML</a></li>
+<li><a href="/webgl/lessons/webgl-cross-platform-issues.html">Cross Platform Issues</a></li>
+<li><a href="/webgl/lessons/webgl-qna.html">Questions and Answers</a></li>
         </ul>
   <li>Reference</li>
         <ul>
           <li><a href="/webgl/lessons/webgl-attributes.html">Attributes</a></li>
 <li><a href="/webgl/lessons/webgl-texture-units.html">Texture Units</a></li>
+<li><a href="/webgl/lessons/webgl-framebuffers.html">Framebuffers</a></li>
+<li><a href="/webgl/lessons/webgl-readpixels.html">readPixels</a></li>
+<li><a href="/webgl/lessons/webgl-references.html">References</a></li>
         </ul></ul>
 <ul>
   <li><a href="/docs/">Helper API Docs</a></li>
-  <li><a href="http://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
+  <li><a href="https://twgljs.org">TWGL, A tiny WebGL helper library</a></li>
   <li><a href="https://github.com/gfxfundamentals/webgl2-fundamentals">github</a></li>
 </ul>
         </div>
     </div>
     <div class="lesson-comments">
-        <div>Questions? <a href="http://stackoverflow.com/questions/tagged/webgl2">Ask on stackoverflow</a>.</div>
-        <div>Issue/Bug? <a href="http://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+        
+    <div>Issue/Bug? <a href="https://github.com/gfxfundamentals/webgl2-fundamentals/issues">Create an issue on github</a>.</div>
+    <div class="lesson-comment-notes">
+       Use <b>&lt;pre&gt;&lt;code&gt;</b>code goes here<b>&lt;/code&gt;&lt;/pre&gt;</b> for code blocks
+    </div>
+  
 
         <div id="disqus_thread"></div>
-        <script type="text/javascript">
+        <script>
             /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
             var disqus_shortname = 'webgl2fundamentals'; // required: replace example with your forum shortname
             var disqus_identifier = 'WebGL2 3D - Data Textures';
@@ -583,17 +735,45 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
                 (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
             })();
         </script>
-        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
     </div>
   </div>
 </div>
 </body>
+<script>
+const settings = {
+  contribTemplate: "Thank you <a href=\"${html_url}\"><img src=\"${avatar_url}\"> ${login}</a><br>for <a href=\"https://github.com/${owner}/${repo}/commits?author=${login}\">${contributions} contributions</a>",
+  owner: "gfxfundamentals",
+  repo: "webgl2-fundamentals",
+};
+</script>
+<script src="/contributors.js"></script>
 <script src="/3rdparty/jquery-1.11.2.min.js"></script>
 <script src="/webgl/lessons/resources/prettify.js"></script>
-<script src="/webgl/lessons/resources/lesson.js"></script>
-<script src="//cdn.webglstats.com/stat.js" defer="defer" async="async"></script>
+<script src="/webgl/lessons/resources/lesson.js" type="module"></script>
 <script>
+(function() {
+  if (window.location.hostname.indexOf("webgl2fundamentals.org") < 0) {
+      return;
+  }
+
+  function addScript(src, type, fn) {
+    const script = document.createElement('script');
+    const firstScript = document.getElementsByTagName('script')[0];
+    script.async = true;
+    script.defer = true;
+    script.type = type || 'javascript';
+    if (fn) {
+      script.addEventListener('load', fn);
+    }
+    script.src = src;
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
+
+  // can't do this because it would eat contexts
+  //addScript('//gpustats.org/stats.js', 'module');
+
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -601,7 +781,7 @@ Personally I generally use "pixel" when refering to the elements of a texture wi
 
   ga('create', 'UA-90754717-1', 'auto');
   ga('send', 'pageview');
-
+}());
 </script>
 
 

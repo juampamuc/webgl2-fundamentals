@@ -1,5 +1,5 @@
 /*
- * Copyright 2014, Gregg Tavares.
+ * Copyright 2021, GFXFundamentals.
  * All rights reserved.
  *
  * Redistribution and use in source and binary forms, with or without
@@ -12,7 +12,7 @@
  * copyright notice, this list of conditions and the following disclaimer
  * in the documentation and/or other materials provided with the
  * distribution.
- *     * Neither the name of Gregg Tavares. nor the names of his
+ *     * Neither the name of GFXFundamentals. nor the names of his
  * contributors may be used to endorse or promote products derived from
  * this software without specific prior written permission.
  *
@@ -63,6 +63,20 @@
    * @memberOf module:webgl-3d-math
    */
 
+
+  let MatType = Float32Array;
+
+  /**
+   * Sets the type this library creates for a Mat4
+   * @param {constructor} Ctor the constructor for the type. Either `Float32Array` or `Array`
+   * @return {constructor} previous constructor for Mat4
+   */
+  function setDefaultType(Ctor) {
+    const OldType = MatType;
+    MatType = Ctor;
+    return OldType;
+  }
+
   /**
    * Takes two 4-by-4 matrices, a and b, and computes the product in the order
    * that pre-composes b with a.  In other words, the matrix returned will
@@ -75,7 +89,7 @@
    * @return {Matrix4} dst or a new matrix if none provided
    */
   function multiply(a, b, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var b00 = b[0 * 4 + 0];
     var b01 = b[0 * 4 + 1];
     var b02 = b[0 * 4 + 2];
@@ -137,7 +151,7 @@
    * @memberOf module:webgl-3d-math
    */
   function addVectors(a, b, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     dst[0] = a[0] + b[0];
     dst[1] = a[1] + b[1];
     dst[2] = a[2] + b[2];
@@ -153,7 +167,7 @@
    * @memberOf module:webgl-3d-math
    */
   function subtractVectors(a, b, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     dst[0] = a[0] - b[0];
     dst[1] = a[1] - b[1];
     dst[2] = a[2] - b[2];
@@ -161,14 +175,29 @@
   }
 
   /**
+   * scale vectors3
+   * @param {Vector3} v vector
+   * @param {Number} s scale
+   * @param {Vector3} dst optional vector3 to store result
+   * @return {Vector3} dst or new Vector3 if not provided
+   * @memberOf module:webgl-3d-math
+   */
+  function scaleVector(v, s, dst) {
+    dst = dst || new MatType(3);
+    dst[0] = v[0] * s;
+    dst[1] = v[1] * s;
+    dst[2] = v[2] * s;
+    return dst;
+  }  
+  /**
    * normalizes a vector.
-   * @param {Vector3} v vector to normalzie
+   * @param {Vector3} v vector to normalize
    * @param {Vector3} dst optional vector3 to store result
    * @return {Vector3} dst or new Vector3 if not provided
    * @memberOf module:webgl-3d-math
    */
   function normalize(v, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     var length = Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
     // make sure we don't divide by 0.
     if (length > 0.00001) {
@@ -180,12 +209,21 @@
   }
 
   /**
-   * Computes the length of a vecgor
+   * Computes the length of a vector
    * @param {Vector3} v vector to take length of
    * @return {number} length of vector
    */
   function length(v) {
     return Math.sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+  }
+
+  /**
+   * Computes the length squared of a vector
+   * @param {Vector3} v vector to take length of
+   * @return {number} length sqaured of vector
+   */
+  function lengthSq(v) {
+    return v[0] * v[0] + v[1] * v[1] + v[2] * v[2];
   }
 
   /**
@@ -197,7 +235,7 @@
    * @memberOf module:webgl-3d-math
    */
   function cross(a, b, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     dst[0] = a[1] * b[2] - a[2] * b[1];
     dst[1] = a[2] * b[0] - a[0] * b[2];
     dst[2] = a[0] * b[1] - a[1] * b[0];
@@ -220,7 +258,7 @@
    * Computes the distance squared between 2 points
    * @param {Vector3} a
    * @param {Vector3} b
-   * @return {nubmer} distance squared between a and b
+   * @return {number} distance squared between a and b
    */
   function distanceSq(a, b) {
     const dx = a[0] - b[0];
@@ -233,7 +271,7 @@
    * Computes the distance between 2 points
    * @param {Vector3} a
    * @param {Vector3} b
-   * @return {nubmer} distance between a and b
+   * @return {number} distance between a and b
    */
   function distance(a, b) {
     return Math.sqrt(distanceSq(a, b));
@@ -246,7 +284,7 @@
    * @memberOf module:webgl-3d-math
    */
   function identity(dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = 1;
     dst[ 1] = 0;
@@ -276,7 +314,7 @@
    * @memberOf module:webgl-3d-math
    */
   function transpose(m, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = m[0];
     dst[ 1] = m[4];
@@ -311,7 +349,7 @@
    * @memberOf module:webgl-3d-math
    */
   function lookAt(cameraPosition, target, up, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var zAxis = normalize(
         subtractVectors(cameraPosition, target));
     var xAxis = normalize(cross(up, zAxis));
@@ -357,7 +395,7 @@
    * @memberOf module:webgl-3d-math
    */
   function perspective(fieldOfViewInRadians, aspect, near, far, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var f = Math.tan(Math.PI * 0.5 - 0.5 * fieldOfViewInRadians);
     var rangeInv = 1.0 / (near - far);
 
@@ -400,7 +438,7 @@
    * @memberOf module:webgl-3d-math
    */
   function orthographic(left, right, bottom, top, near, far, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = 2 / (right - left);
     dst[ 1] = 0;
@@ -442,7 +480,7 @@
    * @memberOf module:webgl-3d-math
    */
   function frustum(left, right, bottom, top, near, far, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var dx = right - left;
     var dy = top - bottom;
@@ -478,7 +516,7 @@
    * @memberOf module:webgl-3d-math
    */
   function translation(tx, ty, tz, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = 1;
     dst[ 1] = 0;
@@ -501,7 +539,7 @@
   }
 
   /**
-   * Mutliply by translation matrix.
+   * Multiply by translation matrix.
    * @param {Matrix4} m matrix to multiply
    * @param {number} tx x translation.
    * @param {number} ty y translation.
@@ -513,7 +551,7 @@
   function translate(m, tx, ty, tz, dst) {
     // This is the optimized version of
     // return multiply(m, translation(tx, ty, tz), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var m00 = m[0];
     var m01 = m[1];
@@ -563,7 +601,7 @@
    * @memberOf module:webgl-3d-math
    */
   function xRotation(angleInRadians, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var c = Math.cos(angleInRadians);
     var s = Math.sin(angleInRadians);
 
@@ -598,7 +636,7 @@
   function xRotate(m, angleInRadians, dst) {
     // this is the optimized version of
     // return multiply(m, xRotation(angleInRadians), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var m10 = m[4];
     var m11 = m[5];
@@ -642,7 +680,7 @@
    * @memberOf module:webgl-3d-math
    */
   function yRotation(angleInRadians, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var c = Math.cos(angleInRadians);
     var s = Math.sin(angleInRadians);
 
@@ -675,9 +713,9 @@
    * @memberOf module:webgl-3d-math
    */
   function yRotate(m, angleInRadians, dst) {
-    // this is the optimized verison of
+    // this is the optimized version of
     // return multiply(m, yRotation(angleInRadians), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var m00 = m[0 * 4 + 0];
     var m01 = m[0 * 4 + 1];
@@ -721,7 +759,7 @@
    * @memberOf module:webgl-3d-math
    */
   function zRotation(angleInRadians, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var c = Math.cos(angleInRadians);
     var s = Math.sin(angleInRadians);
 
@@ -754,9 +792,9 @@
    * @memberOf module:webgl-3d-math
    */
   function zRotate(m, angleInRadians, dst) {
-    // This is the optimized verison of
+    // This is the optimized version of
     // return multiply(m, zRotation(angleInRadians), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var m00 = m[0 * 4 + 0];
     var m01 = m[0 * 4 + 1];
@@ -801,7 +839,7 @@
    * @memberOf module:webgl-3d-math
    */
   function axisRotation(axis, angleInRadians, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var x = axis[0];
     var y = axis[1];
@@ -847,9 +885,9 @@
    * @memberOf module:webgl-3d-math
    */
   function axisRotate(m, axis, angleInRadians, dst) {
-    // This is the optimized verison of
+    // This is the optimized version of
     // return multiply(m, axisRotation(axis, angleInRadians), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     var x = axis[0];
     var y = axis[1];
@@ -921,7 +959,7 @@
    * @memberOf module:webgl-3d-math
    */
   function scaling(sx, sy, sz, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = sx;
     dst[ 1] = 0;
@@ -954,9 +992,9 @@
    * @memberOf module:webgl-3d-math
    */
   function scale(m, sx, sy, sz, dst) {
-    // This is the optimized verison of
+    // This is the optimized version of
     // return multiply(m, scaling(sx, sy, sz), dst);
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = sx * m[0 * 4 + 0];
     dst[ 1] = sx * m[0 * 4 + 1];
@@ -990,7 +1028,7 @@
    * @return {Matrix4} dst or a new matrix if none provided
    */
   function compose(translation, quaternion, scale, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     const x = quaternion[0];
     const y = quaternion[1];
@@ -1037,7 +1075,7 @@
     dst[14] = translation[2];
     dst[15] = 1;
 
-	  return dst;
+    return dst;
   }
 
   function quatFromRotationMatrix(m, dst) {
@@ -1084,11 +1122,11 @@
   }
 
   function decompose(mat, translation, quaternion, scale) {
-    const sx = m4.length(mat.slice(0, 3));
+    let sx = m4.length(mat.slice(0, 3));
     const sy = m4.length(mat.slice(4, 7));
     const sz = m4.length(mat.slice(8, 11));
 
-    // if dematrmine is negative, we need to invert one scale
+    // if determinate is negative, we need to invert one scale
     const det = determinate(mat);
     if (det < 0) {
       sx = -sx;
@@ -1153,18 +1191,6 @@
     var tmp_9  = m22 * m03;
     var tmp_10 = m02 * m13;
     var tmp_11 = m12 * m03;
-    var tmp_12 = m20 * m31;
-    var tmp_13 = m30 * m21;
-    var tmp_14 = m10 * m31;
-    var tmp_15 = m30 * m11;
-    var tmp_16 = m10 * m21;
-    var tmp_17 = m20 * m11;
-    var tmp_18 = m00 * m31;
-    var tmp_19 = m30 * m01;
-    var tmp_20 = m00 * m21;
-    var tmp_21 = m20 * m01;
-    var tmp_22 = m00 * m11;
-    var tmp_23 = m10 * m01;
 
     var t0 = (tmp_0 * m11 + tmp_3 * m21 + tmp_4 * m31) -
         (tmp_1 * m11 + tmp_2 * m21 + tmp_5 * m31);
@@ -1186,7 +1212,7 @@
    * @memberOf module:webgl-3d-math
    */
   function inverse(m, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
     var m00 = m[0 * 4 + 0];
     var m01 = m[0 * 4 + 1];
     var m02 = m[0 * 4 + 2];
@@ -1281,7 +1307,7 @@
    * @memberOf module:webgl-3d-math
    */
   function transformVector(m, v, dst) {
-    dst = dst || new Float32Array(4);
+    dst = dst || new MatType(4);
     for (var i = 0; i < 4; ++i) {
       dst[i] = 0.0;
       for (var j = 0; j < 4; ++j) {
@@ -1302,7 +1328,7 @@
    * @memberOf module:webgl-3d-math
    */
   function transformPoint(m, v, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     var v0 = v[0];
     var v1 = v[1];
     var v2 = v[2];
@@ -1329,7 +1355,7 @@
    * @memberOf module:webgl-3d-math
    */
   function transformDirection(m, v, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
 
     var v0 = v[0];
     var v1 = v[1];
@@ -1358,7 +1384,7 @@
    * @memberOf module:webgl-3d-math
    */
   function transformNormal(m, v, dst) {
-    dst = dst || new Float32Array(3);
+    dst = dst || new MatType(3);
     var mi = inverse(m);
     var v0 = v[0];
     var v1 = v[1];
@@ -1372,7 +1398,7 @@
   }
 
   function copy(src, dst) {
-    dst = dst || new Float32Array(16);
+    dst = dst || new MatType(16);
 
     dst[ 0] = src[ 0];
     dst[ 1] = src[ 1];
@@ -1399,6 +1425,7 @@
     lookAt: lookAt,
     addVectors: addVectors,
     subtractVectors: subtractVectors,
+    scaleVector: scaleVector,
     distance: distance,
     distanceSq: distanceSq,
     normalize: normalize,
@@ -1409,6 +1436,7 @@
     identity: identity,
     transpose: transpose,
     length: length,
+    lengthSq: lengthSq,
     orthographic: orthographic,
     frustum: frustum,
     perspective: perspective,
@@ -1430,6 +1458,7 @@
     transformPoint: transformPoint,
     transformDirection: transformDirection,
     transformNormal: transformNormal,
+    setDefaultType: setDefaultType,
   };
 
 }));
