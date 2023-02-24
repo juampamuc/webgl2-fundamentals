@@ -407,7 +407,7 @@ uniform sampler2D u_texture;
 out vec4 outColor;
 
 void main() {
-   vec2 texcoord = vec2(0.5, 0.5)  // get a value from the middle of the texture
+   vec2 texcoord = vec2(0.5, 0.5);  // get a value from the middle of the texture
    outColor = texture(u_texture, texcoord);
 }
 </code></pre><p>What data comes out of the texture is <a href="webgl-3d-textures.html">dependent on many settings</a>.
@@ -504,7 +504,7 @@ vec4 y = c * v;
 <li><code class="notranslate" translate="no">v.z</code> is the same as <code class="notranslate" translate="no">v.p</code> and <code class="notranslate" translate="no">v.b</code> and <code class="notranslate" translate="no">v[2]</code>.</li>
 <li><code class="notranslate" translate="no">v.w</code> is the same as <code class="notranslate" translate="no">v.q</code> and <code class="notranslate" translate="no">v.a</code> and <code class="notranslate" translate="no">v[3]</code>.</li>
 </ul>
-<p>It it able to <em>swizzle</em> vec components which means you can swap or repeat components.</p>
+<p>It is able to <em>swizzle</em> vec components which means you can swap or repeat components.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">v.yyyy
 </code></pre><p>is the same as</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">vec4(v.y, v.y, v.y, v.y)
