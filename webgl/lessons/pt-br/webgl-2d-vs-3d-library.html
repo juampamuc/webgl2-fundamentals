@@ -122,6 +122,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
     <a href="#toc">Índice</a>
+    <input type="search" placeholder="?" id="search">
   </div>
 </div>
 <div class="webgl_header">
@@ -251,8 +252,8 @@ objetos em 3D para você. Você deve poder dar à biblioteca alguns dados em 3D,
 alguns parâmetros materiais, algumas luzes e ela deve desenhar o objeto 3D para você.
 A WebGL (e OpenGL ES 2.0+) são usados para desenhar 3D, mas nãom se encaixa na
 descrição.</p>
-<p>Para dar uma anologia, C++ não &quot;processa palavras&quot; fora da caixa. Nós
-não dizemos que o C++ é um &quot;processador de texto&quot;, mesmo que os processadores de texto possam ser
+<p>Para dar uma anologia, C++ não “processa palavras” fora da caixa. Nós
+não dizemos que o C++ é um “processador de texto”, mesmo que os processadores de texto possam ser
 escritos em C++. Da mesma forma, a WebGL não tira gráficos 3D da caixa.
 Você pode escrever uma biblioteca que irá desenhar gráficos 3D com a WebGL, mas por si só,
 ela não faz gráficos 3D.</p>
@@ -261,21 +262,21 @@ com luzes.</p>
 <p>Aqui está o código em three.js para fazer isso</p>
 <pre class="prettyprint showlinemods">
   // Setup.
-  renderer = new THREE.WebGLRenderer({canvas: document.querySelector("#canvas")});
+  renderer &#x3D; new THREE.WebGLRenderer({canvas: document.querySelector(&quot;#canvas&quot;)});
   c.appendChild(renderer.domElement);
 
   // Make and setup a camera.
-  camera = new THREE.PerspectiveCamera(70, 1, 1, 1000);
-  camera.position.z = 400;
+  camera &#x3D; new THREE.PerspectiveCamera(70, 1, 1, 1000);
+  camera.position.z &#x3D; 400;
 
   // Make a scene
-  scene = new THREE.Scene();
+  scene &#x3D; new THREE.Scene();
 
   // Make a cube.
-  var geometry = new THREE.BoxGeometry(200, 200, 200);
+  var geometry &#x3D; new THREE.BoxGeometry(200, 200, 200);
 
   // Make a material
-  var material = new THREE.MeshPhongMaterial({
+  var material &#x3D; new THREE.MeshPhongMaterial({
     ambient: 0x555555,
     color: 0x555555,
     specular: 0xffffff,
@@ -284,19 +285,18 @@ com luzes.</p>
   });
 
   // Create a mesh based on the geometry and material
-  mesh = new THREE.Mesh(geometry, material);
+  mesh &#x3D; new THREE.Mesh(geometry, material);
   scene.add(mesh);
 
   // Add 2 lights.
-  light1 = new THREE.PointLight(0xff0040, 2, 0);
+  light1 &#x3D; new THREE.PointLight(0xff0040, 2, 0);
   light1.position.set(200, 100, 300);
   scene.add(light1);
 
-  light2 = new THREE.PointLight(0x0040ff, 2, 0);
+  light2 &#x3D; new THREE.PointLight(0x0040ff, 2, 0);
   light2.position.set(-200, 100, 300);
   scene.add(light2);
 </pre>
-
 <p>e aqui é exibido.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/resources%2Fthree-js-cube-with-lights.html"></iframe>
@@ -322,10 +322,10 @@ com luzes.</p>
   // Setup 2 lights
   glEnable(GL_LIGHT0);
   glEnable(GL_LIGHT1);
-  float light0_position[] = {  200, 100, 300, };
-  float light1_position[] = { -200, 100, 300, };
-  float light0_color[] = { 1, 0, 0.25, 1, };
-  float light1_color[] = { 0, 0.25, 1, 1, };
+  float light0_position[] &#x3D; {  200, 100, 300, };
+  float light1_position[] &#x3D; { -200, 100, 300, };
+  float light0_color[] &#x3D; { 1, 0, 0.25, 1, };
+  float light1_color[] &#x3D; { 0, 0.25, 1, 1, };
   glLightfv(GL_LIGHT0, GL_DIFFUSE, light0_color);
   glLightfv(GL_LIGHT1, GL_DIFFUSE, light1_color);
   glLightfv(GL_LIGHT0, GL_POSITION, light0_position);
@@ -333,12 +333,12 @@ com luzes.</p>
 ...
 
   // Draw a cube.
-  static int count = 0;
+  static int count &#x3D; 0;
   ++count;
 
   glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
   glLoadIdentity();
-  double angle = count * 0.1;
+  double angle &#x3D; count * 0.1;
   glTranslatef(0, 0, -400);
   glRotatef(angle, 0, 1, 0);
 
@@ -359,8 +359,6 @@ com luzes.</p>
 
   glEnd();
 </pre>
-
-
 <p>Observe como precisamos quase nenhum conhecimento de matemática para 3D para qualquer um desses
 exemplos. Compare isso com a WebGL. Não vou escrever o código
 necessário para a WebGL. O código não é muito maior. Não é
@@ -378,7 +376,7 @@ lidar com isso por você. Isso foi verdade para a OpenGL original, como mostrado
 É verdade para outras bibliotecas em 3D, como three.js. Mas não é verdade para a OpenGL
 ES 2.0+ ou a WebGL.</p>
 <p>Parece desleal chamar a WebGL de uma biblioteca 3D. Um usuário que vem para a WebGL
-pensará &quot;oh, biblioteca 3D. Legal. Isso fará todo o 3D para mim&quot; e depois encontre,
+pensará “oh, biblioteca 3D. Legal. Isso fará todo o 3D para mim” e depois encontre,
 da maneira mais difícil, não, esse não é o caso.</p>
 <p>Podemos dar um passo adiante. Aqui está um desenho de um wireframe 3D de um
 cubo em Canvas.</p>
@@ -416,11 +414,11 @@ fornece dados em 3D, e as bibliotecas cuidam de calcular os pontos do clipspace 
 não é uma biblioteca 3D. Espero que você também perceba que uma biblioteca 3D deve
 lidar com o 3D para você. A OpenGL fez isso. Three.js faz isso. Mas a OpenGL ES 2.0 e a WebGL,
 não. Portanto, eles argumentam que não pertencem à mesma categoria ampla de
-&quot;Bibliotecas 3D&quot;.</p>
+“Bibliotecas 3D”.</p>
 <p>The point of all of this is to give a developer that is new to WebGL
 an understanding of WebGL at its core. Knowing that WebGL is not a
 3D library and that they have to provide all the knowledge themselves
-lets them know what&#39;s next for them and whether they want to pursue
+lets them know what’s next for them and whether they want to pursue
 that 3D math knowledge or instead choose a 3D library to handle it
 for them. It also removes much of the mystery of how it works.</p>
 <p>O objetivo de tudo isso é dar a um desenvolvedor que é novo na WebGL,

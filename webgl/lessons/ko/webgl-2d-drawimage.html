@@ -123,6 +123,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
     <a href="#toc">목차</a>
+    <input type="search" placeholder="?" id="search">
   </div>
 </div>
 <div class="webgl_header">
@@ -249,14 +250,16 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
 ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
                      dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>여태까지 배운 것들을 사용해서 이 함수를 WebGL로 어떻게 구현할까요? 첫번째 접근 방식은 아마 이 사이트의
+</code></pre>
+<p>여태까지 배운 것들을 사용해서 이 함수를 WebGL로 어떻게 구현할까요? 첫번째 접근 방식은 아마 이 사이트의
 첫번째 글에서 했던 것 처럼 정점들을 생성하는 것이 될 겁니다. GPU로  정점 정보를 보내는 것은
 일반적으로 느린 작업입니다(물론 이게 더 빠른 경우들도 있긴 합니다만).</p>
 <p>이것은 WebGL을 사용하는 기본적인 방법입니다. 중요한 것은 셰이더를 작성하고 해당 세이더를 창의적
 으로 활용해서 문제를 푸는 것이죠.</p>
 <p>우선 첫번째 버전부터 시작해봅시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, x, y);
-</code></pre><p>이 함수는 이미지를 <code class="notranslate" translate="no">x, y</code> 좌표에 원본 사이즈대로 그리는 것입니다.
+</code></pre>
+<p>이 함수는 이미지를 <code class="notranslate" translate="no">x, y</code> 좌표에 원본 사이즈대로 그리는 것입니다.
 비슷한 함수를 WebGL 버전으로 만들기 위해서 <code class="notranslate" translate="no">x,y</code>, <code class="notranslate" translate="no">x + width, y</code>, <code class="notranslate" translate="no">x, y + height</code>, <code class="notranslate" translate="no">x  + width, y + height</code> 좌표를
 가진 정점들을 매번 업로드해서 이미지를 해당 위치에 그릴 수 있습니다.
 사실 이게 우리가 <a href="webgl-fundamentals.html">첫 번째  게시물에서 했던 작업이었죠</a>.</p>
@@ -278,7 +281,8 @@ void main() {
    gl_Position = u_matrix * a_position;
    v_texcoord = a_texcoord;
 }
-</code></pre><p>그리고 간단한 fragment shader도 있어야겠죠.</p>
+</code></pre>
+<p>그리고 간단한 fragment shader도 있어야겠죠.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
 precision highp float;
 
@@ -291,7 +295,8 @@ out vec4 outColor;
 void main() {
    outColor = texture(texture, v_texcoord);
 }
-</code></pre><p>이제 함수를 봅시다.</p>
+</code></pre>
+<p>이제 함수를 봅시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">function drawImage(tex, texWidth, texHeight, dstX, dstY) {
   gl.useProgram(program);
 
@@ -299,34 +304,35 @@ void main() {
   gl.bindVertexArray(vao);
 
   var textureUnit = 0;
-        // 쉐이더에게 우리가 사용할 텍스쳐가 0번 유닛에 있다고 알려줍니다.
+		// 쉐이더에게 우리가 사용할 텍스쳐가 0번 유닛에 있다고 알려줍니다.
   gl.uniform1i(textureLocation, textureUnit);
 
-        // 텍스쳐를 0번 유닛에 할당합니다.
+		// 텍스쳐를 0번 유닛에 할당합니다.
   gl.activeTexture(gl.TEXTURE0 + textureUnit);
   gl.bindTexture(gl.TEXTURE_2D, tex);
 
-        // 픽셀 좌표를 클립 스페이스 좌표로 변환하는 행렬입니다.
+		// 픽셀 좌표를 클립 스페이스 좌표로 변환하는 행렬입니다.
   var matrix = m4.orthographic(0, gl.canvas.width, gl.canvas.height, 0, -1, 1);
 
-        // 우리의 사각형을 dstX, dstY 로 이동합니다.
+		// 우리의 사각형을 dstX, dstY 로 이동합니다.
   matrix = m4.translate(matrix, dstX, dstY, 0);
 
-        // 1 유닛 크기의 사각형을 texWidth, texHeight 유닛 크기로 조정합니다.
+		// 1 유닛 크기의 사각형을 texWidth, texHeight 유닛 크기로 조정합니다.
   matrix = m4.scale(matrix, texWidth, texHeight, 1);
 
-        // 행렬에 값을 넣습니다
+		// 행렬에 값을 넣습니다
   gl.uniformMatrix4fv(matrixLocation, false, matrix);
 
-        // 사각형을 그립니다(2개의 삼각형, 6개의 정점)
+		// 사각형을 그립니다(2개의 삼각형, 6개의 정점)
   var offset = 0;
   var count = 6;
   gl.drawArrays(gl.TRIANGLES, offset, count);
 }
-</code></pre><p>이미지들을 텍스쳐로 로딩해봅시다.</p>
+</code></pre>
+<p>이미지들을 텍스쳐로 로딩해봅시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">// 텍스쳐 정보를 생성합니다. { width: w, height: h, texture: tex }
-    // 텍스쳐는 우선 1x1 픽셀 크기로 생성된 뒤
-    // 이미지 로딩이 완료되면 업데이트됩니다.
+	// 텍스쳐는 우선 1x1 픽셀 크기로 생성된 뒤
+	// 이미지 로딩이 완료되면 업데이트됩니다.
 function loadImageAndCreateTextureInfo(url) {
   var tex = gl.createTexture();
   gl.bindTexture(gl.TEXTURE_2D, tex);
@@ -340,7 +346,7 @@ function loadImageAndCreateTextureInfo(url) {
     texture: tex,
   };
   var img = new Image();
-  img.addEventListener(&#39;load&#39;, function() {
+  img.addEventListener('load', function() {
     textureInfo.width = img.width;
     textureInfo.height = img.height;
 
@@ -353,11 +359,12 @@ function loadImageAndCreateTextureInfo(url) {
 }
 
 var textureInfos = [
-  loadImageAndCreateTextureInfo(&#39;resources/star.jpg&#39;),
-  loadImageAndCreateTextureInfo(&#39;resources/leaves.jpg&#39;),
-  loadImageAndCreateTextureInfo(&#39;resources/keyboard.jpg&#39;),
+  loadImageAndCreateTextureInfo('resources/star.jpg'),
+  loadImageAndCreateTextureInfo('resources/leaves.jpg'),
+  loadImageAndCreateTextureInfo('resources/keyboard.jpg'),
 ];
-</code></pre><p>그럼 이제 이것들을 랜덤한 곳에 그려봅시다.</p>
+</code></pre>
+<p>그럼 이제 이것들을 랜덤한 곳에 그려봅시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var drawInfos = [];
 var numToDraw = 9;
 var speed = 60;
@@ -394,7 +401,7 @@ function update(deltaTime) {
 function draw() {
   webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
-        // WebGL에게 클립 스페이스를 픽셀로 어떻게 변환할 지 알려줍니다.
+		// WebGL에게 클립 스페이스를 픽셀로 어떻게 변환할 지 알려줍니다.
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
   // 캔버스를 지웁니다.
@@ -423,7 +430,8 @@ function render(time) {
   requestAnimationFrame(render);
 }
 requestAnimationFrame(render);
-</code></pre><p>결과물은 아래와 같습니다.</p>
+</code></pre>
+<p>결과물은 아래와 같습니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-01.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-01.html" target="_blank">새 창으로 열기</a>
@@ -432,7 +440,8 @@ requestAnimationFrame(render);
 </p>
 <p>이제 원본 <code class="notranslate" translate="no">drawImage</code> 함수의 두 번째 버전을 다뤄봅시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>실제로 별로 다를 것도 없습니다. 그저 <code class="notranslate" translate="no">dstWidth</code> 와 <code class="notranslate" translate="no">dstHeight</code>를 
+</code></pre>
+<p>실제로 별로 다를 것도 없습니다. 그저 <code class="notranslate" translate="no">dstWidth</code> 와 <code class="notranslate" translate="no">dstHeight</code>를
 <code class="notranslate" translate="no">texWidth</code>와 <code class="notranslate" translate="no">texHeight</code> 대신 사용하면 됩니다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(tex, texWidth, texHeight, dstX, dstY, dstWidth, dstHeight) {
 +  if (dstWidth === undefined) {
@@ -449,7 +458,7 @@ requestAnimationFrame(render);
   gl.bindVertexArray(vao);
 
   var textureUnit = 0;
-  // the shader we&#39;re putting the texture on texture unit 0
+  // the shader we're putting the texture on texture unit 0
   gl.uniform1i(textureLocation, textureUnit);
 
   // Bind the texture to texture unit 0
@@ -474,7 +483,8 @@ requestAnimationFrame(render);
   var count = 6;
   gl.drawArrays(gl.TRIANGLES, offset, count);
 }
-</code></pre><p>여러가지 크기를 사용하도록 코드를 수정했습니다.</p>
+</code></pre>
+<p>여러가지 크기를 사용하도록 코드를 수정했습니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-02.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-02.html" target="_blank">새 창으로 열기</a>
@@ -484,10 +494,11 @@ requestAnimationFrame(render);
 <p>아주 간단합니다. 그럼 <code class="notranslate" translate="no">drawImage</code>의 세 번째 버전은 어떨까요?</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">ctx.drawImage(image, srcX, srcY, srcWidth, srcHeight,
                      dstX, dstY, dstWidth, dstHeight);
-</code></pre><p>텍스쳐의 특정한 부분을 선택하기 위해서는 텍스쳐 좌표를 능숙하게 다뤄야 합니다. 텍스쳐 좌표
+</code></pre>
+<p>텍스쳐의 특정한 부분을 선택하기 위해서는 텍스쳐 좌표를 능숙하게 다뤄야 합니다. 텍스쳐 좌표
 의 동작 방식은 <a href="webgl-3d-textures.html">이 게시물에서 설명하고 있습니다</a>.
-해당 게시물에서는 일반적인 방식으로 텍스쳐 좌표를 손수 생성했습니다. 하지만 행렬 연산으로 현재 
-위치를 조절한 것처럼 즉석에서 다른 행렬 연산을 사용해서 텍스쳐 좌표를 생성할 수도 있습니다. </p>
+해당 게시물에서는 일반적인 방식으로 텍스쳐 좌표를 손수 생성했습니다. 하지만 행렬 연산으로 현재
+위치를 조절한 것처럼 즉석에서 다른 행렬 연산을 사용해서 텍스쳐 좌표를 생성할 수도 있습니다.</p>
 <p>정점 셰이더에 텍스쳐 행렬을 추가하고 텍스쳐 좌표를 이 텍스쳐 행렬과 곱해줍시다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">#version 300 es
 
@@ -503,10 +514,12 @@ void main() {
    gl_Position = u_matrix * a_position;
 *   v_texcoord = (u_textureMatrix * vec4(a_texcoord, 0, 1)).xy;
 }
-</code></pre><p>이제 텍스쳐 행렬의 위치를 찾아야 합니다.</p>
+</code></pre>
+<p>이제 텍스쳐 행렬의 위치를 찾아야 합니다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">var matrixLocation = gl.getUniformLocation(program, &quot;u_matrix&quot;);
 +var textureMatrixLocation = gl.getUniformLocation(program, &quot;u_textureMatrix&quot;);
-</code></pre><p>그리고 <code class="notranslate" translate="no">drawImage</code> 내에서 우리가 원하는 텍스쳐의 특정 부분을 선택하도록 설정해야 합니다.
+</code></pre>
+<p>그리고 <code class="notranslate" translate="no">drawImage</code> 내에서 우리가 원하는 텍스쳐의 특정 부분을 선택하도록 설정해야 합니다.
 텍스쳐 좌표들도 우리가 이미 위치 좌표에 했던 것처럼 단위 크기 사각형인 편이 효과적입니다.</p>
 <pre class="prettyprint notranslate" translate="no"><code class="notranslate" translate="no">*function drawImage(
 *    tex, texWidth, texHeight,
@@ -564,7 +577,8 @@ void main() {
   // draw the quad (2 triangles, 6 vertices)
   gl.drawArrays(gl.TRIANGLES, 0, 6);
 }
-</code></pre><p>텍스쳐의 특정 부분들을 선택하도록 코드를 수정했습니다. 결과물은 아래와 같습니다.</p>
+</code></pre>
+<p>텍스쳐의 특정 부분들을 선택하도록 코드를 수정했습니다. 결과물은 아래와 같습니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-03.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-03.html" target="_blank">새 창으로 열기</a>
@@ -591,7 +605,7 @@ void main() {
 *  var texMatrix = m4.scaling(1 / texWidth, 1 / texHeight, 1);
 *
 *  // We need to pick a place to rotate around
-*  // We&#39;ll move to the middle, rotate, then move back
+*  // We'll move to the middle, rotate, then move back
 *  var texMatrix = m4.translate(texMatrix, texWidth * 0.5, texHeight * 0.5, 0);
 *  var texMatrix = m4.zRotate(texMatrix, srcRotation);
 *  var texMatrix = m4.translate(texMatrix, texWidth * -0.5, texHeight * -0.5, 0);
@@ -603,7 +617,8 @@ void main() {
 
   // Set the texture matrix.
   gl.uniformMatrix4fv(textureMatrixLocation, false, texMatrix);
-</code></pre><p>그럼 이렇게 됩니다.</p>
+</code></pre>
+<p>그럼 이렇게 됩니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-05.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-05.html" target="_blank">새 창으로 열기</a>
@@ -632,7 +647,8 @@ void main() {
 +   }
    outColor = texture(texture, v_texcoord);
 }
-</code></pre><p>이제 테두리 바깥쪽은 사라집니다.</p>
+</code></pre>
+<p>이제 테두리 바깥쪽은 사라집니다.</p>
 <p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-06.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-06.html" target="_blank">새 창으로 열기</a>
@@ -659,7 +675,8 @@ void main() {
    }
    outColor = texture(texture, v_texcoord);
 }
-</code></pre><p><div class="webgl_example_container">
+</code></pre>
+<p><div class="webgl_example_container">
   <iframe class="webgl_example" style=" " src="/webgl/resources/editor.html?url=/webgl/lessons/..%2Fwebgl-2d-drawimage-07.html"></iframe>
   <a class="webgl_center" href="/webgl/lessons/../webgl-2d-drawimage-07.html" target="_blank">새 창으로 열기</a>
 </div>
@@ -688,8 +705,8 @@ uniform mat4 u_textureMatrix;
 out vec2 v_texcoord;
 
 void main() {
-   gl_Position = u_matrix * a_position;
-*   v_texcoord = (u_textureMatrix * a_position).xy;
+   gl_Position &#x3D; u_matrix * a_position;
+*   v_texcoord &#x3D; (u_textureMatrix * a_position).xy;
 }
 </pre>
 <p>
@@ -702,8 +719,6 @@ void main() {
 
 
 </div>
-
-
 
     </div>
     <div class="lesson-sidebar">
