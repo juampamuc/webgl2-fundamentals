@@ -671,7 +671,7 @@ gl.transformFeedbackVaryings(
 );
 gl.linkProgram(program);
 if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-  throw new Error(gl.getProgramParameter(program));
+  throw new Error(gl.getProgramInfoLog(program));
 }
 </code></pre>
 <p><code class="notranslate" translate="no">gl.transformFeedbackVaryings</code> takes 3 arguments. The program, an array of the names
@@ -888,7 +888,7 @@ a function we can use for both shaders</p>
   }
   gl.linkProgram(program);
   if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-    throw new Error(gl.getProgramParameter(program));
+    throw new Error(gl.getProgramInfoLog(program));
   }
   return program;
 }
@@ -2007,23 +2007,6 @@ their implementations.</p>
 <li><a href="../webgl-gpgpu-closest-line.html">closest lines visualized</a></li>
 <li><a href="../webgl-gpgpu-closest-line-dynamic.html">closest lines dynamic</a></li>
 </ul>
-</li>
-<li>
-<p>Firefox Bug<a id="firefox-bug"></a></p>
-<p>Firefox as of version 84 has <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=1677552">a bug</a> in that
-it wrongly requires there to be at least one active attribute that uses a divisor of 0 when calling
-<code class="notranslate" translate="no">drawArraysIndexed</code>. That means the example above where we draw the closest lines using
-<code class="notranslate" translate="no">drawArraysIndexed</code> fails.</p>
-<p>To work around it we can create a buffer that just has <code class="notranslate" translate="no">[0, 1]</code> in it and use that
-on an attribute for how we used <code class="notranslate" translate="no">gl_VertexID % 2</code>. Instead we’d use</p>
-<pre class="prettyprint notranslate" translate="no"><code class="lang-glsl">in int endPoint;  // needed by firefox
-
-...
--int linePointId = closestNdx * 2 + gl_VertexID % 2;
-+int linePointId = closestNdx * 2 + endPoint;
-...
-</code></pre>
-<p>which will <a href="../webgl/webgl-gpgpu-closest-line-dynamic-transformfeedback-ff.html">make it work in firefox</a>.</p>
 </li>
 <li>
 <p>GPUs don’t have the same precision as CPUs.</p>
